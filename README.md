@@ -3,7 +3,7 @@
 Free, open-source, client-side Vedic Kundali calculator. **No backend. No API keys. No data collection.**
 
 ## Live Demo
-👉 `https://<your-username>.github.io/kundali-open`
+👉 (https://ramisxh.github.io/Kundali-reader/)
 
 ---
 
