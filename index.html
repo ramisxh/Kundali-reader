@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K727ZFHMY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -77,6 +77,18 @@ h1{
 }
 @keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
 .tagline{color:var(--text-dim);font-size:13px;letter-spacing:2.5px;font-family:'Cinzel',serif;text-transform:uppercase}
+.planet-orbit{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:14px 0 0;padding:4px 0}
+.planet-orbit span{font-size:22px;color:var(--gold);cursor:default;transition:opacity .2s}
+.planet-orbit span:hover{opacity:1!important}
+.planet-orbit span:nth-child(1){animation:twinkle 2.0s 0.0s infinite alternate}
+.planet-orbit span:nth-child(2){animation:twinkle 2.3s 0.3s infinite alternate}
+.planet-orbit span:nth-child(3){animation:twinkle 2.6s 0.6s infinite alternate}
+.planet-orbit span:nth-child(4){animation:twinkle 2.9s 0.9s infinite alternate}
+.planet-orbit span:nth-child(5){animation:twinkle 3.2s 0.5s infinite alternate}
+.planet-orbit span:nth-child(6){animation:twinkle 3.5s 0.2s infinite alternate}
+.planet-orbit span:nth-child(7){animation:twinkle 2.8s 1.1s infinite alternate}
+.planet-orbit span:nth-child(8){animation:twinkle 3.8s 0.8s infinite alternate}
+.planet-orbit span:nth-child(9){animation:twinkle 2.5s 1.4s infinite alternate}
 
 /* ── FORM CARD ── */
 .card{
@@ -255,23 +267,231 @@ footer a:hover{color:var(--gold)}
   h1{letter-spacing:2px}
 }
 
+/* ── LANG TOGGLE ── */
+#lang-toggle{
+  position:fixed;top:16px;right:16px;z-index:999;
+  display:flex;border:1px solid var(--border);border-radius:30px;
+  background:var(--card);overflow:hidden;
+}
+.lang-btn{
+  padding:7px 16px;font-family:'Cinzel',serif;font-size:11px;
+  letter-spacing:1.5px;border:none;background:transparent;
+  color:var(--text-dim);cursor:pointer;transition:all .2s;
+}
+.lang-btn.active{background:rgba(195,155,60,.2);color:var(--gold);}
+
 /* ── PRINT ── */
 @media print{
-  #stars,header .logo-ring{display:none}
+  #stars,header .logo-ring,#lang-toggle{display:none}
   body{background:#fff;color:#000}
   .card,.section,.house-item,.dasha-current{border:1px solid #ccc;background:#fff}
 }
+
+/* ── PLAIN LANGUAGE SUMMARY BANNER ── */
+.plain-summary{
+  margin-top:14px;
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:14.5px;
+  line-height:1.65;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  border-left:3px solid;
+}
+.plain-summary.green{
+  background:rgba(78,205,196,.08);
+  border-color:rgba(78,205,196,.6);
+  color:#9eeee9;
+}
+.plain-summary.yellow{
+  background:rgba(195,155,60,.07);
+  border-color:rgba(195,155,60,.5);
+  color:#e0c97a;
+}
+.plain-summary.red{
+  background:rgba(224,85,85,.08);
+  border-color:rgba(224,85,85,.5);
+  color:#f0a0a0;
+}
+.plain-summary .ps-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* ── COLOR INDICATOR DOT ── */
+.indicator{
+  display:inline-block;
+  width:8px;height:8px;
+  border-radius:50%;
+  margin-right:5px;
+  flex-shrink:0;
+}
+.indicator.green{background:#4ECDC4;box-shadow:0 0 5px rgba(78,205,196,.5)}
+.indicator.yellow{background:#C39B3C;box-shadow:0 0 5px rgba(195,155,60,.5)}
+.indicator.red{background:#E05555;box-shadow:0 0 5px rgba(224,85,85,.5)}
+
+/* ── SECTION INDICATOR BADGE ── */
+.sec-indicator{
+  margin-left:auto;
+  display:flex;align-items:center;gap:5px;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;
+  padding:3px 9px;border-radius:12px;
+}
+.sec-indicator.green{color:#4ECDC4;background:rgba(78,205,196,.1);border:1px solid rgba(78,205,196,.3)}
+.sec-indicator.yellow{color:#C39B3C;background:rgba(195,155,60,.1);border:1px solid rgba(195,155,60,.3)}
+.sec-indicator.red{color:#E05555;background:rgba(224,85,85,.1);border:1px solid rgba(224,85,85,.3)}
+.sec-head{flex-wrap:wrap}
+
+/* ── WHATSAPP BUTTON ── */
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 20px;
+  background:linear-gradient(135deg,rgba(37,211,102,.15),rgba(37,211,102,.28));
+  border:1px solid rgba(37,211,102,.45);
+  border-radius:10px;
+  color:#25d366;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+  width:auto;margin-top:0;
+}
+.btn-whatsapp:hover{background:linear-gradient(135deg,rgba(37,211,102,.28),rgba(37,211,102,.42));letter-spacing:2.5px}
+.btn-whatsapp svg{flex-shrink:0}
+
+/* ── TOOLTIP ── */
+.tip{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:15px;height:15px;border-radius:50%;
+  background:rgba(195,155,60,.15);border:1px solid rgba(195,155,60,.3);
+  color:var(--gold-dim);font-size:9px;font-family:'Cinzel',serif;
+  cursor:help;position:relative;margin-left:4px;vertical-align:middle;flex-shrink:0;
+}
+.tip::after{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+  background:#1a1636;border:1px solid var(--border);border-radius:8px;
+  padding:8px 12px;font-size:12px;color:var(--text);font-family:'Crimson Pro',serif;
+  width:220px;line-height:1.5;z-index:100;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+  white-space:normal;text-transform:none;letter-spacing:0;font-weight:normal;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+}
+.tip:hover::after{opacity:1}
+
+/* ── PLANET CARDS ── */
+.planet-cards{display:flex;flex-direction:column;gap:12px}
+.planet-card{
+  background:rgba(10,8,30,.6);border:1px solid var(--border);
+  border-radius:10px;padding:14px 16px;
+  transition:border-color .2s;
+}
+.planet-card:hover{border-color:var(--gold-dim)}
+.planet-card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.planet-card-symbol{font-size:22px;color:var(--gold);flex-shrink:0}
+.planet-card-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--gold-lt)}
+.planet-card-role{font-size:12px;color:var(--text-dim);margin-left:auto;font-style:italic}
+.planet-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.planet-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 9px;border-radius:20px;font-size:11.5px;
+  background:rgba(195,155,60,.06);border:1px solid rgba(195,155,60,.18);color:var(--text-dim);
+}
+.planet-card-story{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:8px}
+.planet-card-strength{display:flex;align-items:center;gap:8px;margin-top:8px}
+.strength-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;white-space:nowrap}
+.strength-bar{display:flex;gap:3px}
+.strength-pip{width:14px;height:6px;border-radius:3px;background:rgba(195,155,60,.1);border:1px solid rgba(195,155,60,.15)}
+.strength-pip.on-green{background:#4ECDC4;border-color:#4ECDC4;box-shadow:0 0 4px rgba(78,205,196,.4)}
+.strength-pip.on-gold{background:var(--gold);border-color:var(--gold);box-shadow:0 0 4px rgba(195,155,60,.4)}
+.strength-pip.on-red{background:var(--red);border-color:var(--red);box-shadow:0 0 4px rgba(224,85,85,.4)}
+.strength-text{font-size:12px;color:var(--text-dim)}
+.planet-conjunction{
+  margin-top:8px;padding:6px 10px;border-radius:6px;
+  background:rgba(232,201,106,.05);border:1px solid rgba(195,155,60,.2);
+  font-size:13px;color:var(--gold-dim);
+}
+
+/* ── DASHA LIFE TIMELINE ── */
+.life-timeline{margin:16px 0 8px;overflow-x:auto;padding-bottom:6px}
+.timeline-track{
+  display:flex;height:28px;border-radius:6px;overflow:hidden;
+  min-width:500px;border:1px solid rgba(195,155,60,.2);
+}
+.timeline-seg{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.6);
+  position:relative;cursor:default;transition:filter .15s;overflow:hidden;
+  white-space:nowrap;
+}
+.timeline-seg:hover{filter:brightness(1.3)}
+.timeline-seg.tl-current{
+  outline:2px solid var(--gold-lt);outline-offset:-2px;
+  color:#fff;font-weight:600;
+}
+.timeline-needle{
+  position:absolute;top:-4px;width:2px;background:var(--gold-lt);
+  box-shadow:0 0 6px var(--gold-lt);border-radius:1px;
+  pointer-events:none;
+}
+.timeline-labels{display:flex;min-width:500px;margin-top:4px}
+.timeline-label{font-size:10px;color:var(--text-dim);text-align:center;overflow:hidden}
+.timeline-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.timeline-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-dim)}
+.timeline-legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── "WHAT TO DO NOW" ACTION BOX ── */
+.action-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,rgba(195,155,60,.06),rgba(78,205,196,.04));
+  border:1px solid rgba(195,155,60,.3);border-radius:12px;padding:18px 20px;
+}
+.action-box-title{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.action-items{display:flex;flex-direction:column;gap:10px}
+.action-item{display:flex;gap:10px;align-items:flex-start}
+.action-num{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:10px;
+  background:rgba(195,155,60,.15);border:1px solid rgba(195,155,60,.3);color:var(--gold);
+  margin-top:2px;
+}
+.action-text{font-size:14px;color:var(--text);line-height:1.6}
+
+/* ── SECTION INTRO ── */
+.sec-intro{
+  font-size:13px;color:var(--text-dim);font-style:italic;
+  margin-bottom:14px;padding:8px 12px;
+  border-left:2px solid rgba(195,155,60,.3);
+  background:rgba(195,155,60,.03);border-radius:0 6px 6px 0;
+}
+
 </style>
 </head>
 <body>
+
+<div id="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btn-hi" onclick="setLang('hi')">हिंदी</button>
+</div>
 
 <div id="stars"></div>
 
 <div id="app">
   <header>
     <div class="logo-ring"><span class="logo-symbol">☸</span></div>
-    <h1>KUNDALI READER</h1>
-    <p class="tagline">Vedic Birth Chart · Jyotish · Free &amp; Open Source</p>
+    <h1 id="site-title">KUNDALI READER</h1>
+    <p class="tagline" id="site-tagline">Vedic Birth Chart · Jyotish · Free &amp; Open Source</p>
+    <div class="planet-orbit">
+      <span style="--d:2s;--dl:0s" title="Sun">&#x2609;</span>
+      <span style="--d:2.3s;--dl:0.2s" title="Moon">&#x263D;</span>
+      <span style="--d:2.6s;--dl:0.4s" title="Mars">&#x2642;</span>
+      <span style="--d:2.9s;--dl:0.6s" title="Mercury">&#x263F;</span>
+      <span style="--d:3.2s;--dl:0.8s" title="Jupiter">&#x2643;</span>
+      <span style="--d:3.5s;--dl:1s" title="Venus">&#x2640;</span>
+      <span style="--d:3.8s;--dl:1.2s" title="Saturn">&#x2644;</span>
+      <span style="--d:4.1s;--dl:1.4s" title="Rahu">&#x260A;</span>
+      <span style="--d:4.4s;--dl:1.6s" title="Ketu">&#x260B;</span>
+    </div>
   </header>
 
   <!-- INPUT FORM -->
@@ -421,6 +641,10 @@ footer a:hover{color:var(--gold)}
     <div style="text-align:center;margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-sm" onclick="window.print()">⎙ Print / Save PDF</button>
       <button class="btn btn-sm" id="btn-reset">← New Chart</button>
+      <button class="btn-whatsapp" id="btn-whatsapp" onclick="shareOnWhatsApp()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span id="btn-whatsapp-text">Share on WhatsApp</span>
+      </button>
     </div>
   </div>
 
@@ -436,6 +660,804 @@ footer a:hover{color:var(--gold)}
 //  Methodology: Lahiri Ayanamsha, Vimshottari Dasha,
 //  Parashari house significations, North Indian chart
 // ══════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════════════════
+//  LANGUAGE SYSTEM — Hindi / English toggle
+// ══════════════════════════════════════════════════════
+let LANG = 'en';
+let LAST_RENDER_DATA = null; // stores last generated chart data for re-render on lang switch
+
+const T = {
+  en: {
+    title:'KUNDALI READER',
+    tagline:'Vedic Birth Chart · Jyotish · Free & Open Source',
+    formTitle:'✦ Enter Birth Details',
+    labelName:'Full Name',
+    labelDob:'Date of Birth',
+    labelTob:'Time of Birth',
+    labelTobHint:'Leave blank = Moon chart used',
+    labelOptional:'(optional)',
+    labelPlace:'Place of Birth',
+    labelTz:'Timezone Offset (UTC)',
+    labelAyan:'Ayanamsha',
+    btnGenerate:'✦ Generate My Kundali',
+    btnPrint:'⎙ Print / Save PDF',
+    btnNew:'← New Chart',
+    errName:'Please enter a name.',
+    errDate:'Please enter a date of birth.',
+    errPlace:'Please enter place of birth.',
+    secLagna:'Lagna — Ascendant',
+    secRashi:'Rashi — Moon Sign',
+    secPlanets:'Planetary Positions',
+    secHouses:'12 Houses Analysis',
+    secDasha:'Vimshottari Dasha',
+    secYogas:'Yogas & Doshas',
+    secStrengths:'Strengths & Challenges',
+    secCareer:'Career & Finance',
+    secRelation:'Relationships & Marriage',
+    secHealth:'Health Indicators',
+    secRemedies:'Remedies',
+    secSummary:'Summary',
+    thPlanet:'Planet',thName:'Name',thSign:'Sign (Sidereal)',thHouse:'House',thNak:'Nakshatra',thDignity:'Dignity',
+    currentDasha:'Current Mahadasha Interpretation',
+    strengths:'STRENGTHS',challenges:'CHALLENGES',
+    noDebil:'No debilitated planets detected.',
+    noYoga:'No major Yogas detected',noYogaDesc:'Chart shows balanced planetary distribution without strong Yoga formations',
+    currentLabel:'← Current',
+    emptyHouse:'Empty',
+    noticeText:'<strong>Accuracy note:</strong> Sun sign is exact. Moon and Lagna positions use polynomial approximations accurate to ±1–2°. For clinical precision, verify with Jagannatha Hora or Kala using Swiss Ephemeris. This tool is educational.<br><br><strong>Privacy:</strong> All calculations run locally in your browser. No data is transmitted anywhere.',
+    footer1:'Open source · No data collected · <a href="https://github.com/" target="_blank">View on GitHub</a>',
+    footer2:'Based on Lahiri Ayanamsha · Vimshottari Dasha system · Parashari Jyotish',
+    timeUnknown:'⚠ No birth time — Lagna approximated from Moon sign',
+    exalted:'Exalted',debilitated:'Debilitated',ownSign:'Own sign',
+    strongPlanet:'strong placement',
+    careerThemes:'Career themes',
+    careerCurrent:'Current Mahadasha lord career inclinations',
+    seventhHouse:'7th house (Partnerships) falls in',ruledBy:'ruled by',placedIn:'7th lord placed in House',
+    venusDesc:'Venus (significator of love)',jupDesc:'Jupiter (significator of marriage)',
+    bodyAreas:'Body areas ruled by',
+    sixthHouse:'6th house (Health/disease) in',
+    planetsIn6:'⚠ Planets in 6th house',healthMonitor:'— health challenges need monitoring.',
+    healthAdvice:'General advice: Maintain regular sleep cycles, address stress early, and exercise suited to',constitution:'constitution.',
+    gemstone:'Gemstone',mantra:'Mantra',donation:'Donation',
+    on:'on',times:'× on',
+  },
+  hi: {
+    title:'कुंडली रीडर',
+    tagline:'वैदिक जन्म कुंडली · ज्योतिष · निःशुल्क',
+    formTitle:'✦ जन्म विवरण दर्ज करें',
+    labelName:'पूरा नाम',
+    labelDob:'जन्म तिथि',
+    labelTob:'जन्म समय',
+    labelTobHint:'खाली छोड़ें = चंद्र कुंडली का उपयोग होगा',
+    labelOptional:'(वैकल्पिक)',
+    labelPlace:'जन्म स्थान',
+    labelTz:'समय क्षेत्र (UTC)',
+    labelAyan:'अयनांश',
+    btnGenerate:'✦ मेरी कुंडली बनाएं',
+    btnPrint:'⎙ प्रिंट / PDF सेव करें',
+    btnNew:'← नई कुंडली',
+    errName:'कृपया नाम दर्ज करें।',
+    errDate:'कृपया जन्म तिथि दर्ज करें।',
+    errPlace:'कृपया जन्म स्थान दर्ज करें।',
+    secLagna:'लग्न — उदय राशि',
+    secRashi:'राशि — चंद्र राशि',
+    secPlanets:'ग्रह स्थिति',
+    secHouses:'12 भावों का विश्लेषण',
+    secDasha:'विंशोत्तरी दशा',
+    secYogas:'योग और दोष',
+    secStrengths:'बल और चुनौतियाँ',
+    secCareer:'करियर और वित्त',
+    secRelation:'संबंध और विवाह',
+    secHealth:'स्वास्थ्य संकेत',
+    secRemedies:'उपाय',
+    secSummary:'सारांश',
+    thPlanet:'ग्रह',thName:'नाम',thSign:'राशि (सायन)',thHouse:'भाव',thNak:'नक्षत्र',thDignity:'बल',
+    currentDasha:'वर्तमान महादशा विश्लेषण',
+    strengths:'बल',challenges:'चुनौतियाँ',
+    noDebil:'कोई नीच ग्रह नहीं मिला।',
+    noYoga:'कोई प्रमुख योग नहीं मिला',noYogaDesc:'कुंडली में संतुलित ग्रह स्थिति है, कोई प्रबल योग नहीं।',
+    currentLabel:'← वर्तमान',
+    emptyHouse:'रिक्त',
+    noticeText:'<strong>सटीकता नोट:</strong> सूर्य राशि बिल्कुल सटीक है। चंद्र और लग्न की स्थिति ±1–2° की गणितीय अनुमान से है। पूर्ण सटीकता के लिए जगन्नाथ होरा सॉफ्टवेयर का उपयोग करें। यह उपकरण शैक्षिक उद्देश्य के लिए है।<br><br><strong>गोपनीयता:</strong> सभी गणनाएं आपके ब्राउज़र में होती हैं। कोई डेटा कहीं नहीं भेजा जाता।',
+    footer1:'ओपन सोर्स · कोई डेटा संग्रह नहीं · <a href="https://github.com/" target="_blank">GitHub पर देखें</a>',
+    footer2:'लाहिरी अयनांश · विंशोत्तरी दशा · पाराशरी ज्योतिष पर आधारित',
+    timeUnknown:'⚠ जन्म समय नहीं — लग्न चंद्र राशि से लिया गया',
+    exalted:'उच्च',debilitated:'नीच',ownSign:'स्वराशि',
+    strongPlanet:'बलवान स्थिति',
+    careerThemes:'करियर क्षेत्र',
+    careerCurrent:'वर्तमान महादशा करियर संकेत',
+    seventhHouse:'सप्तम भाव (साझेदारी)',ruledBy:'स्वामी',placedIn:'सप्तमेश भाव में',
+    venusDesc:'शुक्र (प्रेम के कारक)',jupDesc:'बृहस्पति (विवाह के कारक)',
+    bodyAreas:'शरीर के अंग —',
+    sixthHouse:'षष्ठ भाव (स्वास्थ्य/रोग)',
+    planetsIn6:'⚠ षष्ठ भाव में ग्रह',healthMonitor:'— स्वास्थ्य पर ध्यान दें।',
+    healthAdvice:'सामान्य सलाह: नियमित नींद लें, तनाव को जल्दी दूर करें, और',constitution:'लग्न के अनुसार व्यायाम करें।',
+    gemstone:'रत्न',mantra:'मंत्र',donation:'दान',
+    on:'को',times:'× जाप करें',
+  }
+};
+
+function t(key){ return T[LANG][key]||T['en'][key]||key; }
+
+function setLang(lang){
+  LANG=lang;
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-hi').classList.toggle('active',lang==='hi');
+  document.documentElement.lang=lang==='hi'?'hi':'en';
+  applyLangToUI();
+  // Re-render full output if a chart has already been generated
+  if(LAST_RENDER_DATA && document.getElementById('output').style.display!=='none'){
+    renderOutput(LAST_RENDER_DATA);
+  }
+}
+
+function applyLangToUI(){
+  // Header
+  document.querySelector('h1').textContent=t('title');
+  document.querySelector('.tagline').textContent=t('tagline');
+  // Form
+  const ct=document.querySelector('.card-title');if(ct)ct.textContent=t('formTitle');
+  const labels=document.querySelectorAll('.field label');
+  const labelKeys=['labelName','labelDob','labelTob','labelPlace','labelTz','labelAyan'];
+  labels.forEach((l,i)=>{
+    if(labelKeys[i]){
+      // preserve optional span if present
+      const span=l.querySelector('span');
+      l.childNodes[0].textContent=t(labelKeys[i])+' ';
+      if(span)span.textContent=t('labelOptional');
+    }
+  });
+  const hint=document.querySelector('.hint');if(hint)hint.textContent=t('labelTobHint');
+  const btnGen=document.getElementById('btn-generate');if(btnGen)btnGen.textContent=t('btnGenerate');
+  const errEl=document.getElementById('form-error');if(errEl&&errEl.style.display!=='none')errEl.textContent='';
+  // Output section heads (only if visible)
+  const secHeads=document.querySelectorAll('.sec-head');
+  const secKeys=['secLagna','secRashi','secPlanets','secHouses','secDasha','secYogas','secStrengths','secCareer','secRelation','secHealth','secRemedies','secSummary'];
+  secHeads.forEach((h,i)=>{
+    if(secKeys[i]){
+      const icon=h.querySelector('.sec-icon');
+      const indicator=h.querySelector('.sec-indicator');
+      h.textContent=' '+t(secKeys[i]);
+      if(icon){h.prepend(icon);}
+      if(indicator){h.appendChild(indicator);}
+    }
+  });
+  // Buttons in output
+  const btnPrint=document.querySelector('[onclick="window.print()"]');if(btnPrint)btnPrint.textContent=t('btnPrint');
+  const btnReset=document.getElementById('btn-reset');if(btnReset)btnReset.textContent=t('btnNew');
+  // Notice
+  const notice=document.querySelector('.notice');if(notice)notice.innerHTML=t('noticeText');
+  // Footer
+  const fps=document.querySelectorAll('footer p');
+  if(fps[0])fps[0].innerHTML=t('footer1');
+  if(fps[1])fps[1].textContent=t('footer2');
+}
+
+// Hindi translations for interpretation data
+const LAGNA_TRAITS_HI = {
+  Mesha:'मेष (Aries) लग्न — मंगल द्वारा शासित। गतिशील, पहल करने वाले, प्रतिस्पर्धी, स्वतंत्र। जो पहले करते हैं, बाद में सोचते हैं। शारीरिक रूप से मजबूत। चुनौती: अधैर्य और आक्रामकता।',
+  Vrishabha:'वृषभ (Taurus) लग्न — शुक्र द्वारा शासित। स्थिर, कामुक, धन-उन्मुख, सौंदर्यप्रिय। गहरे वफादार और विश्वसनीय। चुनौती: हठ और बदलाव का विरोध।',
+  Mithuna:'मिथुन (Gemini) लग्न — बुध द्वारा शासित। बुद्धिमान, संचारशील, जिज्ञासु, अनुकूलनीय। उत्कृष्ट लेखक और वक्ता। चुनौती: असंगति और बिखरा हुआ ध्यान।',
+  Karka:'कर्क (Cancer) लग्न — चंद्र द्वारा शासित। भावनात्मक रूप से बुद्धिमान, पोषण करने वाले, सहज। परिवार से गहरा जुड़ाव। चुनौती: मूड स्विंग और अति संवेदनशीलता।',
+  Simha:'सिंह (Leo) लग्न — सूर्य द्वारा शासित। करिश्माई, गर्वीले, उदार, नेतृत्व करने के लिए जन्मे। प्राकृतिक कलाकार। चुनौती: अहंकार और निरंतर मान्यता की आवश्यकता।',
+  Kanya:'कन्या (Virgo) लग्न — बुध द्वारा शासित। विश्लेषणात्मक, विस्तार-उन्मुख, सेवा-मनोवृत्ति। उत्कृष्ट आलोचक। चुनौती: पूर्णतावाद और लगातार चिंता।',
+  Tula:'तुला (Libra) लग्न — शुक्र द्वारा शासित। राजनयिक, न्यायप्रिय, सौंदर्यप्रिय, संबंध-उन्मुख। प्राकृतिक मध्यस्थ। चुनौती: अनिर्णय और लोगों को खुश करना।',
+  Vrishchika:'वृश्चिक (Scorpio) लग्न — मंगल द्वारा शासित। गहन, अंतर्ज्ञानी, परिवर्तनकारी, चुंबकीय रूप से शक्तिशाली। कुछ भी सतही नहीं। चुनौती: ईर्ष्या और नियंत्रण की प्रवृत्ति।',
+  Dhanu:'धनु (Sagittarius) लग्न — बृहस्पति द्वारा शासित। दार्शनिक, स्वतंत्रता-प्रेमी, आशावादी, सत्य-साधक। प्राकृतिक शिक्षक। चुनौती: कठोरता और अधिक वादे।',
+  Makara:'मकर (Capricorn) लग्न — शनि द्वारा शासित। अनुशासित, महत्वाकांक्षी, व्यावहारिक, धीरे लेकिन निश्चित निर्माणकर्ता। चुनौती: ठंडापन और अत्यधिक व्यावहारिकता।',
+  Kumbha:'कुंभ (Aquarius) लग्न — शनि द्वारा शासित। मानवतावादी, अपरंपरागत, बौद्धिक, समुदाय-उन्मुख। चुनौती: अलगाव और भावनात्मक अनुपलब्धता।',
+  Meena:'मीन (Pisces) लग्न — बृहस्पति द्वारा शासित। दयालु, आध्यात्मिक, रचनात्मक, सहानुभूतिशील। चुनौती: सीमाओं का विघटन और पलायनवाद।'
+};
+
+const RASHI_TRAITS_HI = {
+  Mesha:'मेष चंद्र — भावनात्मक रूप से आवेगी, सीधे, जल्दी उत्साहित होने वाले, स्वतंत्रता की आवश्यकता। गहराई से महसूस करते हैं लेकिन जल्दी आगे बढ़ते हैं।',
+  Vrishabha:'वृषभ चंद्र — भावनात्मक रूप से स्थिर और कामुक, पोषण करने वाले, प्रेम में अधिकारवादी। सुरक्षा और आराम की आवश्यकता। रोहिणी नक्षत्र चंद्र विशेष रूप से सौंदर्यप्रिय।',
+  Mithuna:'मिथुन चंद्र — भावनात्मक रूप से बेचैन, बौद्धिक रूप से उत्तेजित, विविधता की आवश्यकता। अभिव्यंजक लेकिन असंगत।',
+  Karka:'कर्क चंद्र — गहराई से भावनात्मक, चंद्र यहाँ उच्च, अत्यधिक अंतर्ज्ञानी। मजबूत मातृ प्रवृत्ति। चिपकने वाला हो सकता है।',
+  Simha:'सिंह चंद्र — भावनात्मक रूप से गर्वीले, गर्मजोशी से भरे, उदार लेकिन पहचान की आवश्यकता। प्रेम में नाटकीय।',
+  Kanya:'कन्या चंद्र — भावनात्मक रूप से विश्लेषणात्मक, गहराई से चिंता करते हैं, भावनाओं के माध्यम से सेवा करते हैं। सुरक्षित महसूस करने के लिए व्यवस्था की आवश्यकता।',
+  Tula:'तुला चंद्र — भावनात्मक रूप से सामंजस्यपूर्ण, पूर्णता के लिए साझेदारी की आवश्यकता। संघर्ष से बचते हैं।',
+  Vrishchika:'वृश्चिक चंद्र — गहन भावनात्मक, निजी, लगाव में सब कुछ या कुछ नहीं। शक्तिशाली लेकिन घायल।',
+  Dhanu:'धनु चंद्र — भावनात्मक रूप से स्वतंत्र, दार्शनिक, स्थान की आवश्यकता। भावनात्मक गहराई से स्वाभाविक रूप से बचते हैं।',
+  Makara:'मकर चंद्र — भावनात्मक रूप से नियंत्रित, धीर, जिम्मेदार। चंद्र यहाँ नीच — भावनात्मक अभिव्यक्ति दबी हुई।',
+  Kumbha:'कुंभ चंद्र — भावनात्मक रूप से अलग, मानवतावादी, रोमांस से अधिक मित्रता को महत्व देते हैं।',
+  Meena:'मीन चंद्र — भावनात्मक रूप से असीमित, सहानुभूतिशील, आध्यात्मिक रूप से जुड़े। दूसरों की भावनाओं को अवशोषित करते हैं।'
+};
+
+const HOUSE_SIG_HI = [
+  'स्वयं, शरीर, व्यक्तित्व, स्वास्थ्य, प्रारंभिक जीवन',
+  'धन, परिवार, वाणी, भोजन, प्रारंभिक शिक्षा',
+  'भाई-बहन, साहस, छोटी यात्राएं, संचार, भुजाएं',
+  'माता, घर, सुख, वाहन, शिक्षा, हृदय',
+  'बुद्धि, रचनात्मकता, प्रेम, संतान, पूर्व जन्म का पुण्य',
+  'शत्रु, रोग, ऋण, सेवा, दैनिक दिनचर्या, मुकदमेबाजी',
+  'जीवनसाथी, व्यापारिक साझेदार, जन संपर्क, विदेश यात्रा',
+  'परिवर्तन, छिपा धन, दीर्घायु, विरासत, तंत्र, ससुराल',
+  'भाग्य, धर्म, पिता, उच्च शिक्षा, लंबी यात्राएं, धर्म',
+  'करियर, सामाजिक स्थिति, अधिकार, सरकार, कर्म',
+  'लाभ, सामाजिक नेटवर्क, बड़े भाई-बहन, आकांक्षाएं, आय',
+  'हानि, एकांत, विदेश, व्यय, अध्यात्म, नींद'
+];
+
+const CAREER_INDICATORS_HI = {
+  Sun:'सरकार, प्रशासन, राजनीति, चिकित्सा, नेतृत्व',
+  Moon:'आतिथ्य, नर्सिंग, जल से संबंधित क्षेत्र, जनसंपर्क, खाद्य',
+  Mars:'इंजीनियरिंग, सेना, शल्य चिकित्सा, खेल, रियल एस्टेट',
+  Mercury:'लेखन, वाणिज्य, लेखा, IT, प्रकाशन, शिक्षण',
+  Jupiter:'कानून, दर्शन, वित्त, शिक्षा, परामर्श, धर्म',
+  Venus:'कला, फैशन, सौंदर्य, विलासिता, मनोरंजन, कूटनीति',
+  Saturn:'खनन, कृषि, निर्माण, श्रम कानून, अनुसंधान',
+  Rahu:'प्रौद्योगिकी, विदेशी क्षेत्र, मीडिया, रसायन',
+  Ketu:'अध्यात्म, तंत्र, अनुसंधान, प्रोग्रामिंग'
+};
+
+const LAGNA_HEALTH_HI = {
+  Mesha:'सिर, मस्तिष्क, आंखें; बुखार, दुर्घटनाओं, सिरदर्द की संभावना।',
+  Vrishabha:'गला, गर्दन, थायरॉइड; गले के संक्रमण, वजन की समस्या।',
+  Mithuna:'फेफड़े, कंधे, बाहें; श्वसन समस्याएं, चिंता।',
+  Karka:'छाती, पेट; पाचन समस्याएं, तरल प्रतिधारण।',
+  Simha:'हृदय, रीढ़, पीठ; हृदय समस्याएं, पीठ दर्द।',
+  Kanya:'आंतें, पाचन तंत्र; IBS, चिंता से पाचन।',
+  Tula:'गुर्दे, पीठ के निचले हिस्से, त्वचा; गुर्दे की पथरी।',
+  Vrishchika:'प्रजनन अंग, बृहदांत्र; हार्मोनल असंतुलन।',
+  Dhanu:'कूल्हे, जांघें, यकृत; यकृत की समस्याएं, कटिस्नायुशूल।',
+  Makara:'घुटने, हड्डियां, जोड़; गठिया, दंत समस्याएं।',
+  Kumbha:'टखने, पैर, रक्त संचार; परिसंचरण समस्याएं।',
+  Meena:'पैर, लसीका तंत्र; तरल प्रतिधारण, प्रतिरक्षा समस्याएं।'
+};
+
+const YOGA_DESC_HI = {
+  'Gajakesari Yoga':'चंद्र से केंद्र में बृहस्पति — ज्ञान, प्रसिद्धि, समृद्धि, सामाजिक कृपा',
+  'Dhana Yoga (partial)':'बृहस्पति लग्न को प्रभावित करता है — बुद्धि और प्रयास से धन',
+  'Budha-Aditya Yoga':'सूर्य और बुध एक ही भाव में — तीव्र बुद्धि, वाकपटुता, पहचान',
+  'Mangal Dosha':'लग्न से मंगल अशुभ भाव में — विवाह में देरी; मंगल उच्च/स्वराशि में हो तो आंशिक शांति',
+  'Kaal Sarp Dosha':'सभी ग्रह राहु-केतु अक्ष के बीच — कर्म पाठ; संघर्ष के बाद महान उपलब्धि संभव',
+  'Ruchaka Yoga':'मंगल उच्च/स्वराशि में केंद्र में — साहस, नेतृत्व, शारीरिक शक्ति',
+  'Bhadra Yoga':'बुध उच्च/स्वराशि में केंद्र में — बुद्धि, वाकपटुता, व्यापार कुशलता',
+  'Hamsa Yoga':'बृहस्पति उच्च/स्वराशि में केंद्र में — ज्ञान, अध्यात्म, शिक्षण क्षमता',
+  'Malavya Yoga':'शुक्र उच्च/स्वराशि में केंद्र में — सौंदर्य, विलासिता, कलात्मक उत्कृष्टता',
+  'Shasha Yoga':'शनि उच्च/स्वराशि में केंद्र में — अधिकार, अनुशासन, राजनीतिक शक्ति',
+  'No major Yogas detected':'कोई प्रमुख योग नहीं — संतुलित ग्रह वितरण',
+};
+
+const PLANET_NAMES_HI = {
+  Sun:'सूर्य',Moon:'चंद्र',Mars:'मंगल',Mercury:'बुध',
+  Jupiter:'बृहस्पति',Venus:'शुक्र',Saturn:'शनि',Rahu:'राहु',Ketu:'केतु'
+};
+
+// ── NAKSHATRA HINDI NAMES ──
+const NAK_HI = {
+  'Ashwini':'अश्विनी','Bharani':'भरणी','Krittika':'कृत्तिका','Rohini':'रोहिणी',
+  'Mrigashira':'मृगशिरा','Ardra':'आर्द्रा','Punarvasu':'पुनर्वसु','Pushya':'पुष्य',
+  'Ashlesha':'आश्लेषा','Magha':'मघा','Purva Phalguni':'पूर्व फाल्गुनी',
+  'Uttara Phalguni':'उत्तर फाल्गुनी','Hasta':'हस्त','Chitra':'चित्रा',
+  'Swati':'स्वाति','Vishakha':'विशाखा','Anuradha':'अनुराधा','Jyeshtha':'ज्येष्ठा',
+  'Moola':'मूल','Purva Ashadha':'पूर्व आषाढ़','Uttara Ashadha':'उत्तर आषाढ़',
+  'Shravana':'श्रवण','Dhanishtha':'धनिष्ठा','Shatabhisha':'शतभिषा',
+  'Purva Bhadrapada':'पूर्व भाद्रपद','Uttara Bhadrapada':'उत्तर भाद्रपद','Revati':'रेवती'
+};
+
+// ── PLANET PERSONALITY — who am I ──
+const PLANET_PERSONA = {
+  Sun:   { en:'The Soul & Authority',  hi:'आत्मा और अधिकार का ग्रह' },
+  Moon:  { en:'The Mind & Emotions',   hi:'मन और भावनाओं का ग्रह' },
+  Mars:  { en:'Energy & Courage',      hi:'ऊर्जा और साहस का ग्रह' },
+  Mercury:{ en:'Intelligence & Speech',hi:'बुद्धि और वाणी का ग्रह' },
+  Jupiter:{ en:'Wisdom & Fortune',     hi:'ज्ञान और भाग्य का ग्रह' },
+  Venus: { en:'Love & Beauty',         hi:'प्रेम और सौंदर्य का ग्रह' },
+  Saturn:{ en:'Discipline & Karma',    hi:'अनुशासन और कर्म का ग्रह' },
+  Rahu:  { en:'Ambition & Illusion',   hi:'महत्वाकांक्षा और माया का ग्रह' },
+  Ketu:  { en:'Spirituality & Release',hi:'अध्यात्म और मुक्ति का ग्रह' }
+};
+
+// ── PLANET GOVERNS — life-area tags ──
+const PLANET_TAGS = {
+  Sun:    { en:['👑 Authority','🌟 Identity','💪 Confidence','🏛️ Government','❤️ Father'],
+            hi:['👑 अधिकार','🌟 पहचान','💪 आत्मविश्वास','🏛️ सरकार','❤️ पिता'] },
+  Moon:   { en:['🧠 Mind','💧 Emotions','🏠 Home','🤱 Mother','💤 Sleep'],
+            hi:['🧠 मन','💧 भावनाएं','🏠 घर','🤱 माता','💤 नींद'] },
+  Mars:   { en:['🔥 Energy','⚔️ Courage','💼 Ambition','🏃 Action','💑 Desire'],
+            hi:['🔥 ऊर्जा','⚔️ साहस','💼 महत्वाकांक्षा','🏃 कार्य','💑 इच्छाशक्ति'] },
+  Mercury:{ en:['📚 Learning','🗣️ Speech','✍️ Writing','🤝 Business','🔢 Analysis'],
+            hi:['📚 पढ़ाई','🗣️ वाणी','✍️ लेखन','🤝 व्यापार','🔢 विश्लेषण'] },
+  Jupiter:{ en:['🙏 Wisdom','💰 Wealth','🎓 Education','⚖️ Justice','🧘 Spirituality'],
+            hi:['🙏 ज्ञान','💰 धन','🎓 शिक्षा','⚖️ न्याय','🧘 अध्यात्म'] },
+  Venus:  { en:['💕 Love','🎨 Arts','💍 Marriage','✨ Luxury','😍 Beauty'],
+            hi:['💕 प्रेम','🎨 कला','💍 विवाह','✨ विलासिता','😍 सौंदर्य'] },
+  Saturn: { en:['⏳ Patience','🔨 Hard Work','📋 Discipline','🏗️ Structure','🌑 Delays'],
+            hi:['⏳ धैर्य','🔨 परिश्रम','📋 अनुशासन','🏗️ व्यवस्था','🌑 विलंब'] },
+  Rahu:   { en:['🚀 Ambition','🌍 Foreign','📱 Technology','🎭 Illusion','⚡ Sudden Change'],
+            hi:['🚀 महत्वाकांक्षा','🌍 विदेश','📱 तकनीक','🎭 भ्रम','⚡ अचानक बदलाव'] },
+  Ketu:   { en:['🕉️ Spirituality','🔮 Intuition','🧩 Past Life','🌀 Detachment','🔬 Research'],
+            hi:['🕉️ अध्यात्म','🔮 अंतर्ज्ञान','🧩 पूर्व जन्म','🌀 वैराग्य','🔬 शोध'] }
+};
+
+// ── PLANET HOUSE PLACEMENT STORIES ──
+// Returns a first-person story for planet in house
+function planetStory(pName, house, sign, hi){
+  const h = parseInt(house);
+  const stories = {
+    Sun:{
+      en:[
+        `Your ${pName} in House 1 — your identity and confidence shine through your personality directly. You are self-made and like to lead.`,
+        `Your ${pName} in House 2 — your confidence comes from wealth and family. Your authority grows through financial security.`,
+        `Your ${pName} in House 3 — your identity expresses through communication, writing and siblings. You shine in media or speaking.`,
+        `Your ${pName} in House 4 — your soul is rooted in home and family. Your inner confidence is tied to your domestic life.`,
+        `Your ${pName} in House 5 — you find yourself through creativity, children and romance. You are naturally dramatic and expressive.`,
+        `Your ${pName} in House 6 — you draw strength from service and overcoming challenges. You have strong willpower against obstacles.`,
+        `Your ${pName} in House 7 — your identity is shaped by partnerships. You seek a partner who mirrors your own strengths.`,
+        `Your ${pName} in House 8 — your soul transforms through deep change. Hidden power, inheritance and the occult are your teachers.`,
+        `Your ${pName} in House 9 — your spirit seeks wisdom, travel and higher truth. You are a natural philosopher or teacher.`,
+        `Your ${pName} in House 10 — this is a prime placement! Your career and reputation are lit up. Authority, fame and leadership are yours.`,
+        `Your ${pName} in House 11 — your confidence grows through community and gains. You lead through networks and big aspirations.`,
+        `Your ${pName} in House 12 — your soul works behind the scenes. Spiritual authority, foreign connections and inner work are your path.`
+      ],
+      hi:[
+        `आपका सूर्य पहले भाव में है — आपकी पहचान और आत्मविश्वास सीधे आपके व्यक्तित्व से झलकता है। आप स्वाभाविक नेता हैं।`,
+        `आपका सूर्य दूसरे भाव में है — आपका आत्मविश्वास धन और परिवार से आता है। आर्थिक सुरक्षा से अधिकार बढ़ता है।`,
+        `आपका सूर्य तीसरे भाव में है — आपकी पहचान संचार, लेखन और भाई-बहन से विकसित होती है। मीडिया या वक्तृत्व में चमकते हैं।`,
+        `आपका सूर्य चौथे भाव में है — आपकी आत्मा घर और परिवार में जड़ें जमाती है। घरेलू जीवन से आत्मबल मिलता है।`,
+        `आपका सूर्य पांचवें भाव में है — आप रचनात्मकता, संतान और प्रेम से अपनी पहचान पाते हैं। स्वाभाविक रूप से अभिव्यंजक हैं।`,
+        `आपका सूर्य छठे भाव में है — आप चुनौतियों को पार करके शक्ति पाते हैं। बाधाओं के विरुद्ध दृढ़ इच्छाशक्ति है।`,
+        `आपका सूर्य सातवें भाव में है — आपकी पहचान साझेदारियों से बनती है। आप ऐसा साथी चाहते हैं जो आपकी शक्ति को दर्शाए।`,
+        `आपका सूर्य आठवें भाव में है — आपकी आत्मा गहरे परिवर्तन से गुजरती है। विरासत और गूढ़ विद्याएं आपके शिक्षक हैं।`,
+        `आपका सूर्य नवें भाव में है — आपकी आत्मा ज्ञान, यात्रा और सत्य खोजती है। आप प्राकृतिक दार्शनिक या शिक्षक हैं।`,
+        `आपका सूर्य दशम भाव में है — यह श्रेष्ठ स्थान है! करियर और प्रतिष्ठा प्रकाशमान है। अधिकार, प्रसिद्धि और नेतृत्व आपके भाग्य में है।`,
+        `आपका सूर्य ग्यारहवें भाव में है — आपका आत्मविश्वास समाज और लाभ से बढ़ता है। नेटवर्क और बड़े सपनों से नेतृत्व मिलता है।`,
+        `आपका सूर्य बारहवें भाव में है — आपकी आत्मा पर्दे के पीछे काम करती है। अध्यात्म, विदेश और आंतरिक कार्य आपका मार्ग है।`
+      ]
+    },
+    Moon:{
+      en:[
+        `Your ${pName} in House 1 — emotions are right on your surface. You are highly sensitive, nurturing and your mood shapes your day.`,
+        `Your ${pName} in House 2 — you find emotional comfort in food, family and financial security. Your voice carries deep feeling.`,
+        `Your ${pName} in House 3 — your mind is quick and restless. You communicate with emotion and feel closest to siblings.`,
+        `Your ${pName} in House 4 — home is your sanctuary. You are deeply attached to your mother and the place you grew up.`,
+        `Your ${pName} in House 5 — your heart lives in creativity, love and children. Romance and play nourish your soul.`,
+        `Your ${pName} in House 6 — you serve through your emotions, often absorbing others' stress. Daily routine stabilises your mind.`,
+        `Your ${pName} in House 7 — you need a caring, emotionally available partner. Relationships deeply affect your inner peace.`,
+        `Your ${pName} in House 8 — your emotions are intense and private. You feel things very deeply and transformation is your path.`,
+        `Your ${pName} in House 9 — your heart longs for meaning, travel and wisdom. Religion or philosophy nourishes you emotionally.`,
+        `Your ${pName} in House 10 — your career thrives in public-facing roles. People respond to your emotional intelligence.`,
+        `Your ${pName} in House 11 — your heart finds joy in friendships and big dreams. Social belonging matters deeply to you.`,
+        `Your ${pName} in House 12 — you feel things in silence. Spirituality, solitude and dreams are your emotional home.`
+      ],
+      hi:[
+        `आपका चंद्र पहले भाव में है — भावनाएं सीधे व्यक्तित्व पर दिखती हैं। आप बहुत संवेदनशील और पोषण करने वाले हैं।`,
+        `आपका चंद्र दूसरे भाव में है — भोजन, परिवार और आर्थिक सुरक्षा से भावनात्मक शांति मिलती है।`,
+        `आपका चंद्र तीसरे भाव में है — आपका मन तेज और बेचैन है। भाई-बहन से गहरा भावनात्मक जुड़ाव है।`,
+        `आपका चंद्र चौथे भाव में है — घर आपका मंदिर है। माता और जन्मस्थान से गहरा लगाव है।`,
+        `आपका चंद्र पांचवें भाव में है — आपका दिल रचनात्मकता, प्रेम और संतान में जीता है।`,
+        `आपका चंद्र छठे भाव में है — आप दूसरों की तकलीफ अपने अंदर महसूस करते हैं। दैनिक दिनचर्या मन को स्थिर करती है।`,
+        `आपका चंद्र सातवें भाव में है — आपको भावनात्मक रूप से उपलब्ध साथी चाहिए। रिश्ते आपकी आंतरिक शांति को गहराई से प्रभावित करते हैं।`,
+        `आपका चंद्र आठवें भाव में है — भावनाएं बहुत गहरी और निजी हैं। गहरे परिवर्तन आपका स्वभाव है।`,
+        `आपका चंद्र नवें भाव में है — दिल अर्थ, यात्रा और ज्ञान के लिए तरसता है। धर्म और दर्शन से मन को पोषण मिलता है।`,
+        `आपका चंद्र दशम भाव में है — करियर में जन-सामना वाले कार्य फलते हैं। लोग आपकी भावनात्मक बुद्धिमत्ता से प्रभावित होते हैं।`,
+        `आपका चंद्र ग्यारहवें भाव में है — दोस्तियों और बड़े सपनों में खुशी मिलती है। सामाजिक अपनापन मन के लिए जरूरी है।`,
+        `आपका चंद्र बारहवें भाव में है — आप मौन में महसूस करते हैं। अध्यात्म, एकांत और सपने आपका भावनात्मक घर हैं।`
+      ]
+    },
+    Mars:{
+      en:[
+        `Your ${pName} in House 1 — you are bold, energetic and action-first. Physical presence is strong; you command attention.`,
+        `Your ${pName} in House 2 — you work hard for wealth and speak directly. Money comes through effort and can go quickly too.`,
+        `Your ${pName} in House 3 — your courage shines in communication and short journeys. Siblings may be competitive or energetic.`,
+        `Your ${pName} in House 4 — home life has energy and sometimes conflict. You protect your family with great passion.`,
+        `Your ${pName} in House 5 — your creativity is fierce and competitive. Sports, speculation and romance are arenas you dominate.`,
+        `Your ${pName} in House 6 — excellent for overcoming enemies and illness. Your willpower in daily challenges is extraordinary.`,
+        `Your ${pName} in House 7 — partnerships are passionate but can be combative. You attract strong, driven partners.`,
+        `Your ${pName} in House 8 — you face transformation fearlessly. Hidden resources, surgery or research are strengths.`,
+        `Your ${pName} in House 9 — you pursue truth with fire. Long travels, philosophy and teaching come with drive.`,
+        `Your ${pName} in House 10 — career in engineering, military, surgery or sports is highlighted. Ambition is intense.`,
+        `Your ${pName} in House 11 — you fight for your goals and gains. Leadership in organisations and social causes suits you.`,
+        `Your ${pName} in House 12 — your energy works in hidden or foreign arenas. Meditation, research or foreign service can channel it.`
+      ],
+      hi:[
+        `आपका मंगल पहले भाव में है — आप साहसी, ऊर्जावान और पहले कदम उठाने वाले हैं। शारीरिक उपस्थिति प्रभावशाली है।`,
+        `आपका मंगल दूसरे भाव में है — धन के लिए कड़ी मेहनत करते हैं और सीधी बात करते हैं।`,
+        `आपका मंगल तीसरे भाव में है — संचार और छोटी यात्राओं में साहस दिखता है। भाई-बहन ऊर्जावान हो सकते हैं।`,
+        `आपका मंगल चौथे भाव में है — घरेलू जीवन में ऊर्जा और कभी-कभी संघर्ष। परिवार की जमकर रक्षा करते हैं।`,
+        `आपका मंगल पांचवें भाव में है — रचनात्मकता तीव्र और प्रतिस्पर्धी है। खेल, सट्टे और प्रेम में आगे रहते हैं।`,
+        `आपका मंगल छठे भाव में है — शत्रुओं और बीमारियों पर विजय के लिए उत्तम स्थान। दैनिक चुनौतियों में अदम्य इच्छाशक्ति है।`,
+        `आपका मंगल सातवें भाव में है — साझेदारियां जुनूनी पर कभी-कभी टकराव वाली होती हैं। मजबूत और महत्वाकांक्षी साथी मिलता है।`,
+        `आपका मंगल आठवें भाव में है — परिवर्तन से नहीं डरते। छिपे संसाधन, शल्य चिकित्सा या शोध में शक्ति है।`,
+        `आपका मंगल नवें भाव में है — सत्य को जोश से खोजते हैं। लंबी यात्राएं, दर्शन और शिक्षण में उत्साह है।`,
+        `आपका मंगल दशम भाव में है — इंजीनियरिंग, सेना, शल्य चिकित्सा या खेल में करियर उभरता है। महत्वाकांक्षा तीव्र है।`,
+        `आपका मंगल ग्यारहवें भाव में है — लक्ष्यों और लाभ के लिए संघर्ष करते हैं। संगठनों में नेतृत्व फलता है।`,
+        `आपका मंगल बारहवें भाव में है — ऊर्जा छिपे या विदेशी क्षेत्रों में काम करती है। ध्यान, शोध या विदेशी सेवा इसे दिशा दे सकती है।`
+      ]
+    },
+    Mercury:{
+      en:[
+        `Your ${pName} in House 1 — you think fast and speak well. Intelligence is your first impression; wit defines you.`,
+        `Your ${pName} in House 2 — wealth comes through communication and learning. Your voice literally earns money.`,
+        `Your ${pName} in House 3 — this is Mercury's natural home. Writing, media and short journeys flow naturally.`,
+        `Your ${pName} in House 4 — your home is filled with books and conversation. Education through family runs deep.`,
+        `Your ${pName} in House 5 — creative intelligence is your gift. You learn through play and love intelligent conversation.`,
+        `Your ${pName} in House 6 — your analytical mind excels at solving problems and service-related work.`,
+        `Your ${pName} in House 7 — you need an intellectually stimulating partner. Business partnerships formed through communication flourish.`,
+        `Your ${pName} in House 8 — your mind probes the deep, hidden and mysterious. Research, psychology and investigation appeal.`,
+        `Your ${pName} in House 9 — you are a natural philosopher and teacher. Writing about religion, law or travel is your calling.`,
+        `Your ${pName} in House 10 — career in communication, IT, writing or business is strongly favoured.`,
+        `Your ${pName} in House 11 — your intellect earns through networks and gains. You communicate your aspirations powerfully.`,
+        `Your ${pName} in House 12 — your mind works in solitude. Deep research, spirituality or working abroad suits you.`
+      ],
+      hi:[
+        `आपका बुध पहले भाव में है — आप तेज सोचते और अच्छा बोलते हैं। बुद्धिमत्ता आपकी पहली पहचान है।`,
+        `आपका बुध दूसरे भाव में है — संचार और पढ़ाई से धन आता है। आपकी आवाज सचमुच कमाई करती है।`,
+        `आपका बुध तीसरे भाव में है — यह बुध का स्वाभाविक घर है। लेखन, मीडिया और छोटी यात्राएं सहज हैं।`,
+        `आपका बुध चौथे भाव में है — घर किताबों और बातचीत से भरा है। परिवार से शिक्षा गहरी है।`,
+        `आपका बुध पांचवें भाव में है — रचनात्मक बुद्धि आपका उपहार है। खेल और बुद्धिमान बातचीत से सीखते हैं।`,
+        `आपका बुध छठे भाव में है — विश्लेषणात्मक मन समस्या-समाधान और सेवा कार्यों में उत्कृष्ट है।`,
+        `आपका बुध सातवें भाव में है — बौद्धिक रूप से उत्तेजक साथी चाहिए। संचार से बने व्यापारिक साझेदारियां फलती हैं।`,
+        `आपका बुध आठवें भाव में है — मन गहरे, छिपे और रहस्यमय को खोजता है। शोध, मनोविज्ञान आकर्षित करते हैं।`,
+        `आपका बुध नवें भाव में है — आप प्राकृतिक दार्शनिक और शिक्षक हैं। धर्म, कानून या यात्रा पर लिखना आपकी पुकार है।`,
+        `आपका बुध दशम भाव में है — संचार, IT, लेखन या व्यापार में करियर बहुत अनुकूल है।`,
+        `आपका बुध ग्यारहवें भाव में है — बुद्धि नेटवर्क और लाभ से कमाती है। आकांक्षाएं प्रभावशाली ढंग से संप्रेषित होती हैं।`,
+        `आपका बुध बारहवें भाव में है — मन एकांत में काम करता है। गहरा शोध, अध्यात्म या विदेश में काम उपयुक्त है।`
+      ]
+    },
+    Jupiter:{
+      en:[
+        `Your ${pName} in House 1 — you are naturally wise, generous and optimistic. People feel blessed around you.`,
+        `Your ${pName} in House 2 — wealth and family are blessed. You earn through wisdom and your words carry weight.`,
+        `Your ${pName} in House 3 — writing, teaching and communication are blessed. Siblings bring good fortune.`,
+        `Your ${pName} in House 4 — home and mother are blessed. Higher education roots you. Property grows over time.`,
+        `Your ${pName} in House 5 — children and creativity are greatly blessed. Speculation and education are favourable.`,
+        `Your ${pName} in House 6 — you overcome enemies and illness through wisdom and grace. Service to others expands you.`,
+        `Your ${pName} in House 7 — marriage is blessed with a wise, educated partner. Business partnerships flourish.`,
+        `Your ${pName} in House 8 — you handle life's deepest transformations with wisdom. Inheritance and occult knowledge are gifts.`,
+        `Your ${pName} in House 9 — this is Jupiter's best placement. Extraordinary fortune, wisdom and spiritual growth await.`,
+        `Your ${pName} in House 10 — career in law, education, finance or religion is strongly blessed. Authority and respect come naturally.`,
+        `Your ${pName} in House 11 — gains and friendships are greatly blessed. Your network brings fortune and your wishes are fulfilled.`,
+        `Your ${pName} in House 12 — spiritual wisdom is your treasure. Foreign settlements, ashrams or charitable work bring fulfilment.`
+      ],
+      hi:[
+        `आपका बृहस्पति पहले भाव में है — आप स्वाभाविक रूप से ज्ञानी, उदार और आशावादी हैं। आपके पास आशीर्वाद का भाव है।`,
+        `आपका बृहस्पति दूसरे भाव में है — धन और परिवार पर आशीर्वाद है। ज्ञान से कमाई होती है।`,
+        `आपका बृहस्पति तीसरे भाव में है — लेखन, शिक्षण और संचार पर कृपा है। भाई-बहन सौभाग्य लाते हैं।`,
+        `आपका बृहस्पति चौथे भाव में है — घर और माता पर आशीर्वाद है। उच्च शिक्षा जड़ें देती है।`,
+        `आपका बृहस्पति पांचवें भाव में है — संतान और रचनात्मकता पर विशेष कृपा है। शिक्षा अनुकूल है।`,
+        `आपका बृहस्पति छठे भाव में है — ज्ञान और अनुग्रह से शत्रुओं और रोगों पर विजय। सेवा से विस्तार होता है।`,
+        `आपका बृहस्पति सातवें भाव में है — विवाह ज्ञानी, शिक्षित साथी से आशीर्वादित है। व्यापारिक साझेदारियां फलती हैं।`,
+        `आपका बृहस्पति आठवें भाव में है — जीवन के गहरे परिवर्तनों को ज्ञान से संभालते हैं। विरासत और गूढ़ ज्ञान उपहार हैं।`,
+        `आपका बृहस्पति नवें भाव में है — यह बृहस्पति का सर्वश्रेष्ठ स्थान है। असाधारण भाग्य और आध्यात्मिक विकास की संभावना है।`,
+        `आपका बृहस्पति दशम भाव में है — कानून, शिक्षा, वित्त या धर्म में करियर बहुत अनुकूल है।`,
+        `आपका बृहस्पति ग्यारहवें भाव में है — लाभ और मित्रताएं बहुत आशीर्वादित हैं। नेटवर्क से भाग्य और इच्छाओं की पूर्ति होती है।`,
+        `आपका बृहस्पति बारहवें भाव में है — आध्यात्मिक ज्ञान आपका खजाना है। विदेश, आश्रम या दान से संतुष्टि मिलती है।`
+      ]
+    },
+    Venus:{
+      en:[
+        `Your ${pName} in House 1 — you are naturally attractive, charming and love beauty. People are drawn to your grace.`,
+        `Your ${pName} in House 2 — wealth, family and beautiful speech are blessed. You earn through arts, beauty or luxury.`,
+        `Your ${pName} in House 3 — your communication is beautiful and persuasive. Creative writing, media and arts flourish.`,
+        `Your ${pName} in House 4 — your home is beautiful and harmonious. Comforts and luxuries come to your domestic life.`,
+        `Your ${pName} in House 5 — love, romance and creativity are beautifully blessed. Your artistic gifts are significant.`,
+        `Your ${pName} in House 6 — you find beauty in service. Art therapy, healing or working in aesthetic industries suits you.`,
+        `Your ${pName} in House 7 — marriage and partnerships are beautifully blessed. Your partner is attractive and artistic.`,
+        `Your ${pName} in House 8 — deep intimacy, shared wealth and transformation through love are your themes.`,
+        `Your ${pName} in House 9 — love of beauty, travel and wisdom merge. Art, culture and philosophy inspire you.`,
+        `Your ${pName} in House 10 — career in arts, fashion, entertainment or diplomacy is strongly favoured.`,
+        `Your ${pName} in House 11 — social beauty and gains through art or aesthetics are highlighted. Friends are artistic.`,
+        `Your ${pName} in House 12 — secret loves, spiritual beauty and foreign pleasures are themes. Art done in solitude.`
+      ],
+      hi:[
+        `आपका शुक्र पहले भाव में है — आप स्वाभाविक रूप से आकर्षक और कोमल हैं। लोग आपकी ओर खिंचते हैं।`,
+        `आपका शुक्र दूसरे भाव में है — धन, परिवार और सुंदर वाणी पर आशीर्वाद है। कला, सौंदर्य या विलासिता से कमाई होती है।`,
+        `आपका शुक्र तीसरे भाव में है — संचार सुंदर और प्रभावशाली है। रचनात्मक लेखन और मीडिया फलते हैं।`,
+        `आपका शुक्र चौथे भाव में है — घर सुंदर और सामंजस्यपूर्ण है। घरेलू जीवन में सुख-सुविधाएं आती हैं।`,
+        `आपका शुक्र पांचवें भाव में है — प्रेम, रोमांस और रचनात्मकता पर सुंदर आशीर्वाद है। कलात्मक प्रतिभा महत्वपूर्ण है।`,
+        `आपका शुक्र छठे भाव में है — सेवा में सौंदर्य पाते हैं। कला चिकित्सा, उपचार या सौंदर्य उद्योग उपयुक्त है।`,
+        `आपका शुक्र सातवें भाव में है — विवाह और साझेदारियां सुंदर रूप से आशीर्वादित हैं। साथी आकर्षक और कलात्मक होता है।`,
+        `आपका शुक्र आठवें भाव में है — गहरी अंतरंगता, साझा धन और प्रेम से परिवर्तन आपके विषय हैं।`,
+        `आपका शुक्र नवें भाव में है — सौंदर्य, यात्रा और ज्ञान का प्रेम एकसाथ है। कला, संस्कृति और दर्शन प्रेरित करते हैं।`,
+        `आपका शुक्र दशम भाव में है — कला, फैशन, मनोरंजन या कूटनीति में करियर बहुत अनुकूल है।`,
+        `आपका शुक्र ग्यारहवें भाव में है — कला या सौंदर्यशास्त्र से सामाजिक सौंदर्य और लाभ मिलता है। मित्र कलात्मक होते हैं।`,
+        `आपका शुक्र बारहवें भाव में है — गुप्त प्रेम, आध्यात्मिक सौंदर्य और विदेशी आनंद विषय हैं।`
+      ]
+    },
+    Saturn:{
+      en:[
+        `Your ${pName} in House 1 — life taught you discipline early. You are serious, responsible and mature beyond your years.`,
+        `Your ${pName} in House 2 — wealth comes slowly but steadily through sustained effort. Family lessons run deep.`,
+        `Your ${pName} in House 3 — your communication is careful and considered. Hard work in writing or media pays off over time.`,
+        `Your ${pName} in House 4 — early home life may have been serious or restricted. Real estate and security grow with age.`,
+        `Your ${pName} in House 5 — creativity and romance may feel blocked early but bloom with maturity. Children arrive in time.`,
+        `Your ${pName} in House 6 — excellent placement for service, healthcare or labour law. You have extraordinary endurance.`,
+        `Your ${pName} in House 7 — marriage may come later or to a serious, older partner. Partnerships demand real commitment.`,
+        `Your ${pName} in House 8 — you are patient in the face of transformation. Longevity and steady handling of crises are gifts.`,
+        `Your ${pName} in House 9 — your spiritual journey is serious and disciplined. Wisdom comes through structured practice.`,
+        `Your ${pName} in House 10 — slow but sure rise to authority. Career in law, government, management or research rewards patience.`,
+        `Your ${pName} in House 11 — gains come slowly but surely. Long-term social networks prove valuable over time.`,
+        `Your ${pName} in House 12 — spiritual discipline, isolation and karmic release. Foreign lands or ashram life appeal.`
+      ],
+      hi:[
+        `आपका शनि पहले भाव में है — जीवन ने जल्दी अनुशासन सिखाया। आप गंभीर, जिम्मेदार और उम्र से परिपक्व हैं।`,
+        `आपका शनि दूसरे भाव में है — धन धीरे लेकिन लगातार प्रयास से आता है। परिवार के सबक गहरे हैं।`,
+        `आपका शनि तीसरे भाव में है — संचार सावधान और सोचा-समझा है। लेखन या मीडिया में कड़ी मेहनत समय के साथ फल देती है।`,
+        `आपका शनि चौथे भाव में है — प्रारंभिक घरेलू जीवन गंभीर रहा हो सकता है। उम्र के साथ संपत्ति और सुरक्षा बढ़ती है।`,
+        `आपका शनि पांचवें भाव में है — शुरू में रचनात्मकता और रोमांस में बाधा हो सकती है, पर परिपक्वता के साथ खिलते हैं।`,
+        `आपका शनि छठे भाव में है — सेवा, स्वास्थ्य सेवा या श्रम कानून के लिए उत्तम स्थान। असाधारण सहनशक्ति है।`,
+        `आपका शनि सातवें भाव में है — विवाह देर से या गंभीर, बड़े साथी से हो सकता है। साझेदारियां असली प्रतिबद्धता मांगती हैं।`,
+        `आपका शनि आठवें भाव में है — परिवर्तन का सामना धैर्य से करते हैं। दीर्घायु और संकटों को संभालने की क्षमता उपहार है।`,
+        `आपका शनि नवें भाव में है — आध्यात्मिक यात्रा गंभीर और अनुशासित है। संरचित साधना से ज्ञान आता है।`,
+        `आपका शनि दशम भाव में है — धीरे लेकिन निश्चित रूप से अधिकार की ओर उठान। कानून, सरकार या प्रबंधन में करियर फलता है।`,
+        `आपका शनि ग्यारहवें भाव में है — लाभ धीरे लेकिन निश्चित रूप से आता है। दीर्घकालिक सामाजिक नेटवर्क समय के साथ मूल्यवान सिद्ध होते हैं।`,
+        `आपका शनि बारहवें भाव में है — आध्यात्मिक अनुशासन, एकांत और कार्मिक मुक्ति। विदेश या आश्रम जीवन आकर्षित करता है।`
+      ]
+    },
+    Rahu:{
+      en:[
+        `Your ${pName} in House 1 — you are intensely ambitious about self-reinvention. Unconventional personality, magnetic presence.`,
+        `Your ${pName} in House 2 — you are driven to accumulate wealth through unconventional means. Foreign influence on family.`,
+        `Your ${pName} in House 3 — your communication is unconventional and magnetic. Media, technology or bold ideas are your arena.`,
+        `Your ${pName} in House 4 — deep desire for a secure home, possibly in a foreign land. Unconventional domestic setup.`,
+        `Your ${pName} in House 5 — obsessive creativity and unconventional romance. Children may have unusual qualities.`,
+        `Your ${pName} in House 6 — strong for overcoming enemies and excelling in competitive fields and foreign service.`,
+        `Your ${pName} in House 7 — you attract foreign or unconventional partners. Business with foreigners can be very rewarding.`,
+        `Your ${pName} in House 8 — obsession with hidden knowledge, sudden transformation and occult research.`,
+        `Your ${pName} in House 9 — you question traditional beliefs and forge your own philosophy. Foreign cultures attract you.`,
+        `Your ${pName} in House 10 — career rises through technology, media, foreign connections or unconventional paths.`,
+        `Your ${pName} in House 11 — gains through technology, foreign sources and large networks. Ambitious social goals.`,
+        `Your ${pName} in House 12 — foreign lands, spiritual seeking and dissolution of boundaries are your themes.`
+      ],
+      hi:[
+        `आपका राहु पहले भाव में है — आप स्वयं को पुनर्निर्मित करने में बहुत महत्वाकांक्षी हैं। अपरंपरागत व्यक्तित्व, चुंबकीय उपस्थिति।`,
+        `आपका राहु दूसरे भाव में है — अपरंपरागत तरीकों से धन संचय करने की तीव्र इच्छा है। परिवार पर विदेशी प्रभाव।`,
+        `आपका राहु तीसरे भाव में है — आपका संचार अपरंपरागत और चुंबकीय है। मीडिया, तकनीक या साहसी विचार आपका क्षेत्र है।`,
+        `आपका राहु चौथे भाव में है — सुरक्षित घर की गहरी चाहत, शायद विदेश में। अपरंपरागत घरेलू व्यवस्था।`,
+        `आपका राहु पांचवें भाव में है — जुनूनी रचनात्मकता और अपरंपरागत रोमांस। संतान में असामान्य गुण हो सकते हैं।`,
+        `आपका राहु छठे भाव में है — शत्रुओं पर विजय और विदेशी सेवा में उत्कृष्टता के लिए मजबूत।`,
+        `आपका राहु सातवें भाव में है — विदेशी या अपरंपरागत साथी आकर्षित करते हैं। विदेशियों के साथ व्यापार बहुत फायदेमंद हो सकता है।`,
+        `आपका राहु आठवें भाव में है — छिपे ज्ञान, अचानक परिवर्तन और गूढ़ शोध में जुनून।`,
+        `आपका राहु नवें भाव में है — पारंपरिक मान्यताओं पर सवाल उठाते हैं और अपना दर्शन बनाते हैं। विदेशी संस्कृतियां आकर्षित करती हैं।`,
+        `आपका राहु दशम भाव में है — तकनीक, मीडिया, विदेशी संबंध या अपरंपरागत मार्गों से करियर उठता है।`,
+        `आपका राहु ग्यारहवें भाव में है — तकनीक, विदेशी स्रोतों और बड़े नेटवर्क से लाभ। महत्वाकांक्षी सामाजिक लक्ष्य।`,
+        `आपका राहु बारहवें भाव में है — विदेश, आध्यात्मिक खोज और सीमाओं का विघटन आपके विषय हैं।`
+      ]
+    },
+    Ketu:{
+      en:[
+        `Your ${pName} in House 1 — past life wisdom is embedded in you. Detached from physical identity, spiritual by nature.`,
+        `Your ${pName} in House 2 — past life with wealth means detachment from money now. Speech is direct, almost blunt.`,
+        `Your ${pName} in House 3 — writing and communication come naturally from past life skills. Siblings may be spiritually significant.`,
+        `Your ${pName} in House 4 — home and mother connection is karmic. You may feel restless at home; spirituality provides roots.`,
+        `Your ${pName} in House 5 — creative gifts and intelligence from past lives. Past-life connection with children.`,
+        `Your ${pName} in House 6 — excellent for healing, research and spiritual service. Enemies cause little lasting harm.`,
+        `Your ${pName} in House 7 — partnerships have a karmic quality. You seek spiritual or highly intuitive partners.`,
+        `Your ${pName} in House 8 — deeply intuitive about hidden and occult matters. Past life knowledge of transformation.`,
+        `Your ${pName} in House 9 — you have deep past-life spiritual merit. Wisdom comes intuitively, not from books alone.`,
+        `Your ${pName} in House 10 — career in research, spirituality or healing. Worldly fame matters less; depth matters more.`,
+        `Your ${pName} in House 11 — gains come surprisingly. Friends from past lives reappear. Detached from material goals.`,
+        `Your ${pName} in House 12 — this is Ketu's natural home. Moksha, spiritual liberation and dissolving into the divine.`
+      ],
+      hi:[
+        `आपका केतु पहले भाव में है — पूर्व जन्म का ज्ञान आपमें समाया है। भौतिक पहचान से वैराग्य, स्वभाव से आध्यात्मिक।`,
+        `आपका केतु दूसरे भाव में है — पूर्व जन्म में धन था इसलिए अब उससे वैराग्य। वाणी सीधी, लगभग कड़वी।`,
+        `आपका केतु तीसरे भाव में है — लेखन और संचार पूर्व जन्म के कौशल से स्वाभाविक रूप से आते हैं।`,
+        `आपका केतु चौथे भाव में है — घर और माता का संबंध कार्मिक है। घर पर बेचैनी महसूस हो सकती है; अध्यात्म जड़ें देता है।`,
+        `आपका केतु पांचवें भाव में है — पूर्व जन्म की रचनात्मक प्रतिभाएं और बुद्धि। संतान से पूर्व जन्म का संबंध।`,
+        `आपका केतु छठे भाव में है — उपचार, शोध और आध्यात्मिक सेवा के लिए उत्तम। शत्रु कोई स्थायी नुकसान नहीं कर सकते।`,
+        `आपका केतु सातवें भाव में है — साझेदारियों में कार्मिक गुण है। आध्यात्मिक या अत्यधिक अंतर्ज्ञानी साथी चाहिए।`,
+        `आपका केतु आठवें भाव में है — छिपी और गूढ़ बातों के बारे में गहरा अंतर्ज्ञान। पूर्व जन्म का परिवर्तन ज्ञान।`,
+        `आपका केतु नवें भाव में है — पूर्व जन्म का गहरा आध्यात्मिक पुण्य है। ज्ञान केवल किताबों से नहीं, अंतर्ज्ञान से आता है।`,
+        `आपका केतु दशम भाव में है — शोध, अध्यात्म या उपचार में करियर। सांसारिक प्रसिद्धि कम मायने रखती है; गहराई ज्यादा।`,
+        `आपका केतु ग्यारहवें भाव में है — लाभ अचानक आते हैं। पूर्व जन्म के मित्र फिर मिलते हैं। भौतिक लक्ष्यों से वैराग्य।`,
+        `आपका केतु बारहवें भाव में है — यह केतु का स्वाभाविक घर है। मोक्ष, आध्यात्मिक मुक्ति और ईश्वर में विलीन होना।`
+      ]
+    }
+  };
+  const pStories = stories[pName];
+  if(!pStories) return '';
+  const idx = Math.min(Math.max(h-1, 0), 11);
+  return hi ? pStories.hi[idx] : pStories.en[idx];
+}
+
+// ── PLANET STRENGTH SCORE (0-5) ──
+function planetStrengthScore(p){
+  let score = 3;
+  if(p.dignity==='Exalted') score=5;
+  else if(p.dignity==='Own sign') score=4;
+  else if(p.dignity==='Debilitated') score=1;
+  const goodH=[1,4,5,7,9,10,11];
+  const badH=[6,8,12];
+  if(goodH.includes(p.house)) score=Math.min(5,score+1);
+  if(badH.includes(p.house)) score=Math.max(1,score-1);
+  return score;
+}
+
+function strengthMeter(score, hi){
+  const tone = score>=4?'on-green':score<=2?'on-red':'on-gold';
+  const label = hi
+    ? score===5?'अत्यंत बलवान':score===4?'बलवान':score===3?'सामान्य':score===2?'कमजोर':'अत्यंत कमजोर'
+    : score===5?'Very Strong':score===4?'Strong':score===3?'Moderate':score===2?'Weak':'Very Weak';
+  const pips = Array.from({length:5},(_,i)=>
+    `<div class="strength-pip ${i<score?tone:''}"></div>`
+  ).join('');
+  return `<div class="planet-card-strength">
+    <span class="strength-label">${hi?'बल':'Strength'}</span>
+    <div class="strength-bar">${pips}</div>
+    <span class="strength-text">${label}</span>
+  </div>`;
+}
+
+// ── DASHA TIMELINE COLORS ──
+const DASHA_COLORS={
+  Sun:'#E8854A',Moon:'#7EC8E3',Mars:'#E05555',Mercury:'#4ECDC4',
+  Jupiter:'#E8C96A',Venus:'#E8A0BF',Saturn:'#9B8EC4',Rahu:'#708090',Ketu:'#A0786A'
+};
+
+
+
+// ── PLAIN LANGUAGE SUMMARIES (Hindi) ──
+const LAGNA_PLAIN = {
+  Mesha:'आपका लग्न मेष है — आप एक ऊर्जावान, साहसी और नेतृत्व करने वाले व्यक्ति हैं। आप पहले कदम उठाते हैं।',
+  Vrishabha:'आपका लग्न वृषभ है — आप स्थिर, भावनात्मक रूप से मजबूत और सौंदर्यप्रिय हैं। आप विश्वसनीय हैं।',
+  Mithuna:'आपका लग्न मिथुन है — आप बुद्धिमान, बातचीत में कुशल और जिज्ञासु हैं। नई बातें जल्दी सीखते हैं।',
+  Karka:'आपका लग्न कर्क है — आप भावनात्मक रूप से गहरे, परिवार-प्रेमी और अंतर्ज्ञानी हैं।',
+  Simha:'आपका लग्न सिंह है — आप करिश्माई, उदार और स्वाभाविक नेता हैं। लोग आपकी ओर खिंचते हैं।',
+  Kanya:'आपका लग्न कन्या है — आप विश्लेषणात्मक, मेहनती और सेवा-भावी हैं। छोटी-छोटी बातों पर ध्यान देते हैं।',
+  Tula:'आपका लग्न तुला है — आप संतुलित, न्यायप्रिय और रिश्तों को महत्व देने वाले हैं।',
+  Vrishchika:'आपका लग्न वृश्चिक है — आप गहन, रहस्यमय और परिवर्तनकारी शक्ति वाले हैं।',
+  Dhanu:'आपका लग्न धनु है — आप आशावादी, स्वतंत्रता-प्रेमी और सत्य की खोज करने वाले हैं।',
+  Makara:'आपका लग्न मकर है — आप अनुशासित, महत्वाकांक्षी और धीरे-धीरे लक्ष्य प्राप्त करने वाले हैं।',
+  Kumbha:'आपका लग्न कुंभ है — आप अपरंपरागत, मानवतावादी और बौद्धिक दृष्टि वाले हैं।',
+  Meena:'आपका लग्न मीन है — आप दयालु, आध्यात्मिक और कल्पनाशील हैं।'
+};
+const LAGNA_PLAIN_EN = {
+  Mesha:'Your Aries Lagna makes you energetic, bold and naturally a leader — you act first.',
+  Vrishabha:'Your Taurus Lagna makes you steady, reliable and aesthetically gifted — a rock for others.',
+  Mithuna:'Your Gemini Lagna makes you witty, communicative and quick to learn new things.',
+  Karka:'Your Cancer Lagna makes you emotionally deep, family-oriented and highly intuitive.',
+  Simha:'Your Leo Lagna makes you charismatic, generous and a natural-born leader.',
+  Kanya:'Your Virgo Lagna makes you analytical, hardworking and detail-oriented.',
+  Tula:'Your Libra Lagna makes you balanced, fair and deeply relationship-oriented.',
+  Vrishchika:'Your Scorpio Lagna makes you intense, magnetic and transformative.',
+  Dhanu:'Your Sagittarius Lagna makes you optimistic, freedom-loving and truth-seeking.',
+  Makara:'Your Capricorn Lagna makes you disciplined, ambitious and a steady achiever.',
+  Kumbha:'Your Aquarius Lagna makes you unconventional, intellectual and humanitarian.',
+  Meena:'Your Pisces Lagna makes you compassionate, spiritual and imaginative.'
+};
+
+const RASHI_PLAIN = {
+  Mesha:'आपकी राशि मेष है — आप भावनाओं में जल्दी आते हैं और जल्दी आगे बढ़ते हैं।',
+  Vrishabha:'आपकी राशि वृषभ है — आप भावनात्मक रूप से स्थिर और सुरक्षा-प्रेमी हैं।',
+  Mithuna:'आपकी राशि मिथुन है — आप मन में कई विचार एक साथ रखते हैं, विविधता पसंद है।',
+  Karka:'आपकी राशि कर्क है — आप बहुत संवेदनशील और परिवार के प्रति समर्पित हैं।',
+  Simha:'आपकी राशि सिंह है — आप प्रेम में उदार हैं और पहचाने जाना पसंद करते हैं।',
+  Kanya:'आपकी राशि कन्या है — आप भावनाओं को विश्लेषण से समझते हैं।',
+  Tula:'आपकी राशि तुला है — आप संबंधों में सामंजस्य चाहते हैं।',
+  Vrishchika:'आपकी राशि वृश्चिक है — आप गहराई से महसूस करते हैं, सब कुछ या कुछ नहीं।',
+  Dhanu:'आपकी राशि धनु है — आप भावनात्मक स्वतंत्रता चाहते हैं।',
+  Makara:'आपकी राशि मकर है — आप भावनाओं को दबाते हैं, व्यावहारिकता को प्राथमिकता देते हैं।',
+  Kumbha:'आपकी राशि कुंभ है — आप दोस्ती को प्रेम से ज्यादा अहमियत देते हैं।',
+  Meena:'आपकी राशि मीन है — आप दूसरों की भावनाओं को महसूस करते हैं, बहुत संवेदनशील हैं।'
+};
+const RASHI_PLAIN_EN = {
+  Mesha:'Aries Moon — you feel things intensely but move on quickly.',
+  Vrishabha:'Taurus Moon — emotionally steady and comfort-seeking.',
+  Mithuna:'Gemini Moon — your mind and emotions race together; you need variety.',
+  Karka:'Cancer Moon — deeply sensitive and devoted to family.',
+  Simha:'Leo Moon — warm-hearted; you need recognition to feel loved.',
+  Kanya:'Kanya Moon — you process emotions through analysis.',
+  Tula:'Libra Moon — you need harmony in relationships above all.',
+  Vrishchika:'Scorpio Moon — you feel deeply; all-or-nothing in attachments.',
+  Dhanu:'Sagittarius Moon — you need space and freedom emotionally.',
+  Makara:'Capricorn Moon — you suppress emotions; practicality leads.',
+  Kumbha:'Aquarius Moon — you value friendship over romance.',
+  Meena:'Pisces Moon — highly empathic; you absorb others\' emotions.'
+};
+
+// Helper to build a plain-language banner
+function plainBanner(text, tone){
+  // tone: 'green' | 'yellow' | 'red'
+  const icon = tone==='green'?'🟢':tone==='red'?'🔴':'🟡';
+  return `<div class="plain-summary ${tone}"><span class="ps-icon">${icon}</span><span>${text}</span></div>`;
+}
+
+// Helper to get section indicator HTML
+function secIndicator(tone, labelEn, labelHi){
+  const hi = LANG==='hi';
+  const label = hi ? labelHi : labelEn;
+  return `<span class="sec-indicator ${tone}" id="si-${Math.random().toString(36).slice(2,6)}">${label}</span>`;
+}
+
+// ── WHATSAPP SHARE ──
+function shareOnWhatsApp(){
+  const name = document.getElementById('out-name').textContent;
+  const meta = document.getElementById('out-meta').textContent;
+  const lagnaEl = document.getElementById('out-lagna');
+  const rashiEl = document.getElementById('out-rashi');
+  const dashaEl = document.getElementById('out-dasha');
+  const summaryEl = document.getElementById('out-summary');
+
+  // Extract lagna sign
+  const lagnaStrong = lagnaEl ? lagnaEl.querySelector('strong') : null;
+  const lagnaText = lagnaStrong ? lagnaStrong.textContent.trim() : '';
+  const rashiStrong = rashiEl ? rashiEl.querySelector('strong') : null;
+  const rashiText = rashiStrong ? rashiStrong.textContent.trim() : '';
+  const summaryText = summaryEl ? summaryEl.textContent.trim().slice(0,220) : '';
+  const hi = LANG==='hi';
+
+  const msg = hi
+    ? `🔱 *कुंडली रीडर* — वैदिक ज्योतिष\n\n` +
+      `👤 *${name}*\n📅 ${meta}\n\n` +
+      `⬆ *लग्न:* ${lagnaText}\n` +
+      `☽ *राशि:* ${rashiText}\n\n` +
+      `📖 ${summaryText}...\n\n` +
+      `✨ _अपनी मुफ्त कुंडली पाएं — kundali-reader.app_`
+    : `🔱 *Kundali Reader* — Vedic Astrology\n\n` +
+      `👤 *${name}*\n📅 ${meta}\n\n` +
+      `⬆ *Lagna:* ${lagnaText}\n` +
+      `☽ *Rashi:* ${rashiText}\n\n` +
+      `📖 ${summaryText}...\n\n` +
+      `✨ _Get your free Kundali — kundali-reader.app_`;
+
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/?text=${encoded}`, '_blank');
+}
+
+// ── PLAIN LANGUAGE BANNER HELPER ──
+function getLagnaTone(lagnaSign, planets){
+  const lagnaLord = SIGN_LORDS[lagnaSign];
+  const ll = planets.find(p=>p.name===lagnaLord);
+  if(!ll) return 'yellow';
+  if(ll.dignity==='Exalted'||ll.dignity==='Own sign') return 'green';
+  if(ll.dignity==='Debilitated') return 'red';
+  const goodHouses=[1,2,4,5,7,9,10,11];
+  return goodHouses.includes(ll.house) ? 'green' : 'yellow';
+}
+function getRashiTone(moon){
+  if(moon.dignity==='Exalted') return 'green';
+  if(moon.dignity==='Debilitated') return 'red';
+  const goodHouses=[1,4,5,7,9,10];
+  return goodHouses.includes(moon.house) ? 'green' : 'yellow';
+}
+function getDashaTone(currentDasha, planets){
+  if(!currentDasha) return 'yellow';
+  const p = planets.find(x=>x.name===currentDasha.lord);
+  if(!p) return 'yellow';
+  if(p.dignity==='Exalted'||p.dignity==='Own sign') return 'green';
+  if(p.dignity==='Debilitated') return 'red';
+  const badHouses=[6,8,12];
+  return badHouses.includes(p.house) ? 'red' : 'green';
+}
+function getYogasTone(yogas){
+  const pos=yogas.filter(y=>y.type==='positive').length;
+  const neg=yogas.filter(y=>y.type==='negative').length;
+  if(pos>neg) return 'green';
+  if(neg>pos) return 'red';
+  return 'yellow';
+}
+function getStrengthsTone(strong, weak){
+  if(strong.length>weak.length+1) return 'green';
+  if(weak.length>strong.length) return 'red';
+  return 'yellow';
+}
+function getCareerTone(tenthLordPlanet){
+  if(!tenthLordPlanet) return 'yellow';
+  if(tenthLordPlanet.dignity==='Exalted'||tenthLordPlanet.dignity==='Own sign') return 'green';
+  if(tenthLordPlanet.dignity==='Debilitated') return 'red';
+  const goodH=[1,2,4,5,9,10,11];
+  return goodH.includes(tenthLordPlanet.house)?'green':'yellow';
+}
+function getRelationTone(venus, seventhLordP){
+  if(venus.dignity==='Exalted') return 'green';
+  if(venus.dignity==='Debilitated') return 'red';
+  if(seventhLordP&&(seventhLordP.dignity==='Exalted'||seventhLordP.dignity==='Own sign')) return 'green';
+  return 'yellow';
+}
+function getHealthTone(planets){
+  const in6=planets.filter(p=>p.house===6).length;
+  if(in6>=2) return 'red';
+  if(in6===1) return 'yellow';
+  return 'green';
+}
+
+const TONE_LABEL_EN = {green:'Positive',yellow:'Neutral',red:'Focus needed'};
+const TONE_LABEL_HI = {green:'शुभ',yellow:'सामान्य',red:'ध्यान दें'};
 
 // ── CONSTANTS ──
 const SIGNS = ['Mesha','Vrishabha','Mithuna','Karka','Simha','Kanya',
@@ -902,9 +1924,9 @@ function generate(){
   const ayan=parseFloat(document.getElementById('inp-ayan').value);
   const errEl=document.getElementById('form-error');
 
-  if(!name){errEl.textContent='Please enter a name.';errEl.style.display='block';return}
-  if(!dateStr){errEl.textContent='Please enter a date of birth.';errEl.style.display='block';return}
-  if(!place){errEl.textContent='Please enter place of birth.';errEl.style.display='block';return}
+  if(!name){errEl.textContent=t('errName');errEl.style.display='block';return}
+  if(!dateStr){errEl.textContent=t('errDate');errEl.style.display='block';return}
+  if(!place){errEl.textContent=t('errPlace');errEl.style.display='block';return}
   errEl.style.display='none';
 
   const [y,m,d]=dateStr.split('-').map(Number);
@@ -968,15 +1990,21 @@ function generate(){
   const yogas=detectYogas(planets,lagnaSign);
 
   // Render
-  renderOutput({name,dateStr,timeStr,place,hasTime,lagnaSign,lagnaLong,planets,dashas,currentDasha,yogas,tz,ayan});
+  LAST_RENDER_DATA = {name,dateStr,timeStr,place,hasTime,lagnaSign,lagnaLong,planets,dashas,currentDasha,yogas,tz,ayan};
+  renderOutput(LAST_RENDER_DATA);
 }
 
 function renderOutput(data){
   const{name,dateStr,timeStr,place,hasTime,lagnaSign,lagnaLong,planets,dashas,currentDasha,yogas}=data;
+  const hi=LANG==='hi';
+  const pName=p=>hi?(PLANET_NAMES_HI[p]||p):p;
+  const hSig=i=>hi?HOUSE_SIG_HI[i]:HOUSE_SIG[i];
+  const carInd=p=>hi?(CAREER_INDICATORS_HI[p]||CAREER_INDICATORS[p]):CAREER_INDICATORS[p];
+  const dig=d=>d===''?'':d==='Exalted'?t('exalted'):d==='Debilitated'?t('debilitated'):d==='Own sign'?t('ownSign'):d;
 
   document.getElementById('out-name').textContent=name;
   document.getElementById('out-meta').textContent=
-    `${dateStr}${timeStr?' · '+timeStr:' · Time unknown (Moon chart)'}  ·  ${place}`;
+    `${dateStr}${timeStr?' · '+timeStr:hi?' · समय अज्ञात (चंद्र कुंडली)':' · Time unknown (Moon chart)'}  ·  ${place}`;
 
   // Draw chart
   drawNorthChart(planets,lagnaSign);
@@ -984,47 +2012,117 @@ function renderOutput(data){
   // ── LAGNA ──
   const lagNak=getNakshatra(lagnaLong);
   const lagSignName=SIGNS[lagnaSign];
+  const lagTrait=hi?(LAGNA_TRAITS_HI[lagSignName]||LAGNA_TRAITS[lagSignName]):LAGNA_TRAITS[lagSignName];
+  const lagnaIntro = hi
+    ? `लग्न वह राशि है जो आपके जन्म के समय पूर्वी क्षितिज पर उदय हो रही थी। यह आपके समग्र व्यक्तित्व, शरीर और जीवन की दिशा को दर्शाती है।`
+    : `The Lagna (Ascendant) is the zodiac sign rising on the eastern horizon at the moment of your birth. It shapes your overall personality, body and life direction.`;
+
+  const lagnaTone = getLagnaTone(lagnaSign, planets);
+  const lagnaPlainText = hi ? (LAGNA_PLAIN[lagSignName]||'') : (LAGNA_PLAIN_EN[lagSignName]||'');
+  const lagNakNameDisp = hi ? (NAK_HI[lagNak.name]||lagNak.name) : lagNak.name;
   document.getElementById('out-lagna').innerHTML=`
+    <div class="sec-intro">${lagnaIntro}</div>
     <p style="margin-bottom:10px">
-      <strong style="color:var(--gold-lt)">${lagSignName} (${SIGNS_EN[lagnaSign]}) Lagna</strong>
-      &nbsp;<span class="badge">${lagNak.name} Nakshatra · Pada ${lagNak.pada}</span>
-      &nbsp;<span class="badge">Ruled by ${SIGN_LORDS[lagnaSign]}</span>
-      ${!data.hasTime?'<br><em style="font-size:13px;color:var(--text-dim)">⚠ No birth time — Lagna approximated from Moon sign</em>':''}
+      <strong style="color:var(--gold-lt)">${lagSignName} (${SIGNS_EN[lagnaSign]}) ${hi?'लग्न':'Lagna'}</strong>
+      &nbsp;<span class="badge">${lagNakNameDisp} ${hi?'नक्षत्र':'Nakshatra'} · ${hi?'पद':'Pada'} ${lagNak.pada}</span>
+      &nbsp;<span class="badge">${hi?'स्वामी':'Ruled by'} ${pName(SIGN_LORDS[lagnaSign])}</span>
+      ${!data.hasTime?`<br><em style="font-size:13px;color:var(--text-dim)">${t('timeUnknown')}</em>`:''}
     </p>
-    <p style="color:var(--text-dim);font-size:15px">${LAGNA_TRAITS[lagSignName]||'Unique Lagna placement.'}</p>
+    <p style="color:var(--text-dim);font-size:15px">${lagTrait||''}</p>
+    ${plainBanner(lagnaPlainText, lagnaTone)}
   `;
 
-  // ── RASHI ──
+  const rashiIntro = hi
+    ? `राशि वह राशि है जिसमें आपके जन्म के समय चंद्रमा था। यह आपके मन, भावनाओं और अंदर से आप कैसे महसूस करते हैं, यह दर्शाती है।`
+    : `Your Rashi (Moon sign) is the zodiac sign where the Moon was at your birth. It reveals your mind, emotions and how you feel on the inside.`;
+
   const moon=planets.find(p=>p.name==='Moon');
+  const rashiTrait=hi?(RASHI_TRAITS_HI[moon.sign]||RASHI_TRAITS[moon.sign]):RASHI_TRAITS[moon.sign];
+  const moonDig=dig(moon.dignity);
+  const rashiTone = getRashiTone(moon);
+  const rashiPlainText = hi ? (RASHI_PLAIN[moon.sign]||'') : (RASHI_PLAIN_EN[moon.sign]||'');
+  const moonNakNameDisp = hi ? (NAK_HI[moon.nak.name]||moon.nak.name) : moon.nak.name;
   document.getElementById('out-rashi').innerHTML=`
+    <div class="sec-intro">${rashiIntro}</div>
     <p style="margin-bottom:10px">
-      <strong style="color:var(--gold-lt)">${moon.sign} (${SIGNS_EN[moon.signIdx]}) Rashi</strong>
-      &nbsp;<span class="badge">${moon.nak.name} Nakshatra · Pada ${moon.nak.pada}</span>
-      &nbsp;<span class="badge">Lord: ${moon.nak.lord}</span>
-      ${moon.dignity?`<span class="badge ${moon.dignity==='Exalted'?'good':moon.dignity==='Debilitated'?'bad':''}">${moon.dignity}</span>`:''}
+      <strong style="color:var(--gold-lt)">${moon.sign} (${SIGNS_EN[moon.signIdx]}) ${hi?'राशि':'Rashi'}</strong>
+      &nbsp;<span class="badge">${moonNakNameDisp} ${hi?'नक्षत्र':'Nakshatra'} · ${hi?'पद':'Pada'} ${moon.nak.pada}</span>
+      &nbsp;<span class="badge">${hi?'स्वामी':'Lord'}: ${pName(moon.nak.lord)}</span>
+      ${moonDig?`<span class="badge ${moon.dignity==='Exalted'?'good':moon.dignity==='Debilitated'?'bad':''}">${moonDig}</span>`:''}
     </p>
-    <p style="color:var(--text-dim);font-size:15px">${RASHI_TRAITS[moon.sign]||''}</p>
-    <p style="color:var(--text-dim);font-size:14px;margin-top:8px">Moon in House ${moon.house}: ${HOUSE_SIG[moon.house-1]}</p>
+    <p style="color:var(--text-dim);font-size:15px">${rashiTrait||''}</p>
+    <p style="color:var(--text-dim);font-size:14px;margin-top:8px">${hi?'चंद्र':'Moon'} ${hi?'भाव':'House'} ${moon.house}: ${hSig(moon.house-1)}</p>
+    ${plainBanner(rashiPlainText, rashiTone)}
   `;
 
-  // ── PLANETS TABLE ──
-  const tbl=document.getElementById('out-planets');
-  tbl.innerHTML=`
-    <thead><tr>
-      <th>Planet</th><th>Name</th><th>Sign (Sidereal)</th>
-      <th>House</th><th>Nakshatra</th><th>Dignity</th>
-    </tr></thead>
-    <tbody>${planets.map(p=>`
-      <tr>
-        <td>${PLANET_SYMBOLS[p.name]}</td>
-        <td>${p.name}</td>
-        <td>${p.sign} · ${p.long.toFixed(1)}°</td>
-        <td>${p.house}</td>
-        <td>${p.nak.name} (Pada ${p.nak.pada})</td>
-        <td>${p.dignity?`<span class="badge ${p.dignity==='Exalted'?'good':p.dignity==='Debilitated'?'bad':''}">${p.dignity}</span>`:'-'}</td>
-      </tr>`).join('')}
-    </tbody>
-  `;
+  // ── PLANETS — RICH CARDS ──
+  const planetContainer = document.getElementById('out-planets');
+
+  // Group planets by house for conjunction detection
+  const houseGroups={};
+  planets.forEach(p=>{ (houseGroups[p.house]=houseGroups[p.house]||[]).push(p.name); });
+
+  const secIntroText = hi
+    ? 'हर ग्रह आपके जीवन के किसी खास हिस्से का प्रतिनिधित्व करता है। नीचे देखें कि प्रत्येक ग्रह आपकी कुंडली में कहाँ बैठा है और आपके लिए क्या अर्थ रखता है।'
+    : 'Each planet governs a specific area of your life. Below you can see where each planet sits in your chart and what it personally means for you.';
+
+  let cardsHTML = `<div class="sec-intro">${secIntroText}</div><div class="planet-cards">`;
+
+  planets.forEach(p=>{
+    const score = planetStrengthScore(p);
+    const tone  = score>=4?'green':score<=2?'red':'yellow';
+    const pd    = dig(p.dignity);
+    const persona = PLANET_PERSONA[p.name];
+    const tags    = PLANET_TAGS[p.name];
+    const story   = planetStory(p.name, p.house, p.sign, hi);
+    const nakName = hi ? (NAK_HI[p.nak.name]||p.nak.name) : p.nak.name;
+    const signDisp = hi ? p.sign : `${p.sign} (${SIGNS_EN[p.signIdx]||p.sign})`;
+
+    // Conjunction note
+    const coplanets = (houseGroups[p.house]||[]).filter(n=>n!==p.name);
+    let conjHTML = '';
+    if(coplanets.length){
+      const coNames = coplanets.map(n=>pName(n)).join(' + ');
+      conjHTML = hi
+        ? `<div class="planet-conjunction">🔗 ${pName(p.name)} + ${coNames} एक ही भाव में — इनकी ऊर्जाएं मिलकर ${p.house}वें भाव के विषयों को प्रभावित करती हैं।</div>`
+        : `<div class="planet-conjunction">🔗 ${pName(p.name)} conjunct ${coNames} in House ${p.house} — their energies blend, amplifying themes of ${hSig(p.house-1)}.</div>`;
+    }
+
+    const tagsHTML = (hi?tags.hi:tags.en).map(tag=>`<span class="planet-tag">${tag}</span>`).join('');
+
+    cardsHTML += `
+    <div class="planet-card">
+      <div class="planet-card-header">
+        <span class="planet-card-symbol">${PLANET_SYMBOLS[p.name]}</span>
+        <div>
+          <div class="planet-card-name">${pName(p.name)}</div>
+          <div style="font-size:11px;color:var(--text-dim)">${hi?(persona?.hi||''):(persona?.en||'')}</div>
+        </div>
+        <div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+          <span class="sec-indicator ${tone}" style="margin-left:0">${tone==='green'?(hi?'शुभ':'Strong'):tone==='red'?(hi?'चुनौती':'Challenge'):(hi?'सामान्य':'Moderate')}</span>
+          ${pd?`<span class="badge ${p.dignity==='Exalted'?'good':p.dignity==='Debilitated'?'bad':''}" style="font-size:10px">${pd}</span>`:''}
+        </div>
+      </div>
+
+      <div class="planet-card-tags">${tagsHTML}</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;font-size:12px;color:var(--text-dim)">
+        <span>📍 ${hi?'भाव':'House'} <strong style="color:var(--gold-lt)">${p.house}</strong></span>
+        <span>♎ ${hi?'राशि':'Sign'} <strong style="color:var(--gold-lt)">${signDisp}</strong></span>
+        <span>⭐ ${hi?'नक्षत्र':'Nakshatra'} <strong style="color:var(--gold-lt)">${nakName}</strong> · ${hi?'पद':'Pada'} ${p.nak.pada}</span>
+        <span>${hi?'स्वामी':'Lord'}: <strong style="color:var(--gold-lt)">${pName(p.nak.lord)}</strong></span>
+      </div>
+
+      <div class="planet-card-story">${story}</div>
+
+      ${conjHTML}
+      ${strengthMeter(score, hi)}
+    </div>`;
+  });
+
+  cardsHTML += '</div>';
+  planetContainer.outerHTML = `<div id="out-planets">${cardsHTML}</div>`;
+
 
   // ── HOUSES ──
   const houseGrid=document.getElementById('out-houses');
@@ -1033,57 +2131,106 @@ function renderOutput(data){
     if(!planetsByHouse[p.house])planetsByHouse[p.house]=[];
     planetsByHouse[p.house].push(p);
   });
-
   houseGrid.innerHTML=Array.from({length:12},(_,i)=>{
     const h=i+1;
     const sIdx=(lagnaSign+i)%12;
     const ps=planetsByHouse[h]||[];
-    const psStr=ps.length?ps.map(p=>`<span class="badge">${PLANET_SYMBOLS[p.name]} ${p.name}</span>`).join(' '):'<span style="color:var(--text-dim);font-size:12px">Empty</span>';
+    const psStr=ps.length?ps.map(p=>`<span class="badge">${PLANET_SYMBOLS[p.name]} ${pName(p.name)}</span>`).join(' '):`<span style="color:var(--text-dim);font-size:12px">${t('emptyHouse')}</span>`;
     return`<div class="house-item">
-      <div class="house-num">House ${h}</div>
+      <div class="house-num">${hi?'भाव':'House'} ${h}</div>
       <div class="house-sign">${SIGN_SYMBOLS[sIdx]} ${SIGNS[sIdx]}</div>
       <div style="margin-bottom:6px;font-size:12px">${psStr}</div>
-      <div class="house-text">${HOUSE_SIG[i]}</div>
+      <div class="house-text">${hSig(i)}</div>
     </div>`;
   }).join('');
 
   // ── DASHA ──
   const now=new Date();
-  const totalMD=120; // Vimshottari total = 120 years
-  let dashaHTML=dashas.map(d=>{
-    const pct=d.yrs/totalMD*100;
-    const isCurrent=currentDasha&&d.lord===currentDasha.lord&&d.start.getTime()===currentDasha.start.getTime();
-    return`<div class="dasha-bar" style="${isCurrent?'opacity:1':'opacity:.55'}">
-      <div class="dasha-label">
-        <span class="name">${PLANET_SYMBOLS[d.lord]||''} ${d.lord} Mahadasha${isCurrent?' <span style="color:var(--teal);font-size:11px">← Current</span>':''}</span>
-        <span class="years">${fmtDate(d.start)} → ${fmtDate(d.end)} · ${d.yrs}yr</span>
-      </div>
-      <div class="dasha-track"><div class="dasha-fill" style="width:${pct}%"></div></div>
+  const totalMD=120;
+
+  // Build life timeline
+  const birthYear = new Date(dashas[0]?.start||now).getFullYear();
+  const totalSpan = dashas.reduce((s,d)=>s+d.yrs,0);
+  const nowMs = now.getTime();
+  const lifeStart = dashas[0]?.start?.getTime()||nowMs;
+  const lifeEnd   = dashas[dashas.length-1]?.end?.getTime()||nowMs;
+  const lifeSpan  = lifeEnd - lifeStart || 1;
+  const nowPct    = Math.min(100, Math.max(0, (nowMs-lifeStart)/lifeSpan*100));
+
+  let timelineSegs = dashas.map(d=>{
+    const pct = d.yrs/totalSpan*100;
+    const isCurrent = currentDasha&&d.lord===currentDasha.lord&&d.start.getTime()===currentDasha.start.getTime();
+    const col = DASHA_COLORS[d.lord]||'#888';
+    return `<div class="timeline-seg${isCurrent?' tl-current':''}" style="width:${pct}%;background:${col}22;border-right:1px solid ${col}44;color:${col}" title="${pName(d.lord)}: ${d.start.getFullYear()}–${d.end.getFullYear()}">
+      <span style="font-size:8px;overflow:hidden;max-width:100%;padding:0 2px">${PLANET_SYMBOLS[d.lord]||''}</span>
+      ${isCurrent?`<div class="timeline-needle" style="left:${((nowMs-d.start.getTime())/(d.end.getTime()-d.start.getTime())*100).toFixed(1)}%;height:36px;top:-4px"></div>`:''}
     </div>`;
   }).join('');
+
+  let timelineLabels = dashas.map(d=>{
+    const pct = d.yrs/totalSpan*100;
+    const col = DASHA_COLORS[d.lord]||'#888';
+    return `<div class="timeline-label" style="width:${pct}%;color:${col}">${pName(d.lord)}<br><span style="font-size:9px;color:var(--text-dim)">${d.start.getFullYear()}</span></div>`;
+  }).join('');
+
+  const timelineIntro = hi
+    ? `यह आपके पूरे जीवन की दशा-टाइमलाइन है। <strong style="color:var(--gold-lt)">सोने की सुई</strong> दर्शाती है कि आप अभी कहाँ हैं।`
+    : `This is your complete life Dasha timeline. The <strong style="color:var(--gold-lt)">gold needle</strong> shows where you are right now.`;
+
+  let dashaHTML = `
+    <div class="sec-intro">${timelineIntro}</div>
+    <div class="life-timeline">
+      <div class="timeline-track">${timelineSegs}</div>
+      <div class="timeline-labels">${timelineLabels}</div>
+    </div>
+  `;
+
+  dashas.forEach(d=>{
+    const pct=d.yrs/totalMD*100;
+    const isCurrent=currentDasha&&d.lord===currentDasha.lord&&d.start.getTime()===currentDasha.start.getTime();
+    dashaHTML+=`<div class="dasha-bar" style="${isCurrent?'opacity:1':'opacity:.55'}">
+      <div class="dasha-label">
+        <span class="name">${PLANET_SYMBOLS[d.lord]||''} ${pName(d.lord)} ${hi?'महादशा':'Mahadasha'}${isCurrent?` <span style="color:var(--teal);font-size:11px">${t('currentLabel')}</span>`:''}</span>
+        <span class="years">${fmtDate(d.start)} → ${fmtDate(d.end)} · ${d.yrs}${hi?'वर्ष':'yr'}</span>
+      </div>
+      <div class="dasha-track"><div class="dasha-fill" style="width:${pct}%;background:${DASHA_COLORS[d.lord]||'var(--gold)'}"></div></div>
+    </div>`;
+  });
+
 
   if(currentDasha){
     const moonNak=getNakshatra(planets.find(p=>p.name==='Moon').long);
     const currentP=planets.find(p=>p.name===currentDasha.lord);
     dashaHTML+=`<div class="dasha-current">
-      <div class="label">Current Mahadasha Interpretation</div>
+      <div class="label">${t('currentDasha')}</div>
       <p style="font-size:15px;color:var(--text);margin-bottom:8px">
-        <strong style="color:var(--gold-lt)">${currentDasha.lord} Mahadasha</strong>
+        <strong style="color:var(--gold-lt)">${pName(currentDasha.lord)} ${hi?'महादशा':'Mahadasha'}</strong>
         (${fmtDate(currentDasha.start)} – ${fmtDate(currentDasha.end)})
       </p>
       <p style="font-size:14px;color:var(--text-dim)">
-        ${currentP?`${currentDasha.lord} is placed in House ${currentP.house} (${currentP.sign}). 
-        This period activates themes of: ${HOUSE_SIG[currentP.house-1]}.
-        Career inclinations: ${CAREER_INDICATORS[currentDasha.lord]||'various fields'}.
-        ${currentP.dignity?`Planetary dignity: ${currentP.dignity}.`:''}`:''}
+        ${currentP?`${pName(currentDasha.lord)} ${hi?'भाव':'House'} ${currentP.house} (${currentP.sign}) ${hi?'में स्थित है।':'is placed in.'}
+        ${hi?'इस अवधि में विषय सक्रिय होते हैं:':'This period activates themes of:'} ${hSig(currentP.house-1)}.
+        ${hi?'करियर संकेत:':'Career inclinations:'} ${carInd(currentDasha.lord)||''}.
+        ${currentP.dignity?`${hi?'ग्रह बल:':'Planetary dignity:'} ${dig(currentP.dignity)}.`:''}`:''}
       </p>
       <p style="font-size:13px;color:var(--text-dim);margin-top:8px">
-        Moon Nakshatra at birth: <strong style="color:var(--gold-lt)">${moonNak.name}</strong> (lord: ${moonNak.lord}) — 
-        this determined your starting Dasha sequence.
+        ${hi?'जन्म चंद्र नक्षत्र:':'Moon Nakshatra at birth:'} <strong style="color:var(--gold-lt)">${moonNak.name}</strong> (${hi?'स्वामी':'lord'}: ${pName(moonNak.lord)}) — 
+        ${hi?'इसी से दशा क्रम निर्धारित हुआ।':'this determined your starting Dasha sequence.'}
       </p>
     </div>`;
   }
   document.getElementById('out-dasha').innerHTML=dashaHTML;
+
+  // Dasha plain summary
+  const dashaTone = getDashaTone(currentDasha, planets);
+  const dashaPlain = hi
+    ? currentDasha
+      ? `वर्तमान में ${pName(currentDasha.lord)} महादशा चल रही है (${fmtDate(currentDasha.end)} तक)। इस अवधि में ${carInd(currentDasha.lord)||'विविध क्षेत्रों'} से जुड़े विषय सक्रिय रहेंगे।`
+      : 'दशा की जानकारी उपलब्ध नहीं।'
+    : currentDasha
+      ? `You are in the ${pName(currentDasha.lord)} Mahadasha until ${fmtDate(currentDasha.end)}. This activates themes of ${carInd(currentDasha.lord)||'varied fields'}.`
+      : 'Dasha information unavailable.';
+  document.getElementById('out-dasha').insertAdjacentHTML('beforeend', plainBanner(dashaPlain, dashaTone));
 
   // ── YOGAS ──
   const yogaHTML=`
@@ -1094,10 +2241,28 @@ function renderOutput(data){
     </div>
     ${yogas.map(y=>`<div style="margin-bottom:10px;padding:10px 14px;background:rgba(10,8,30,.5);border-radius:8px;border:1px solid var(--border)">
       <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;color:${y.type==='positive'?'var(--teal)':y.type==='negative'?'var(--red)':'var(--text-dim)'};margin-bottom:4px">${y.name}</div>
-      <div style="font-size:14px;color:var(--text-dim)">${y.desc}</div>
+      <div style="font-size:14px;color:var(--text-dim)">${hi?(YOGA_DESC_HI[y.name]||y.desc):y.desc}</div>
     </div>`).join('')}
   `;
   document.getElementById('out-yogas').innerHTML=yogaHTML;
+
+  // Yogas plain summary
+  const yogaTone = getYogasTone(yogas);
+  const posYogaNames = yogas.filter(y=>y.type==='positive').map(y=>y.name);
+  const negYogaNames = yogas.filter(y=>y.type==='negative').map(y=>y.name);
+  let yogaPlain = '';
+  if(hi){
+    if(posYogaNames.length&&!negYogaNames.length) yogaPlain=`आपकी कुंडली में ${posYogaNames.join(', ')} जैसे शुभ योग हैं — ये सफलता और समृद्धि के संकेत हैं।`;
+    else if(negYogaNames.length&&!posYogaNames.length) yogaPlain=`${negYogaNames.join(', ')} का प्रभाव है — उपाय करने और सावधान रहने की जरूरत है।`;
+    else if(posYogaNames.length&&negYogaNames.length) yogaPlain=`शुभ योग (${posYogaNames[0]}) के साथ ${negYogaNames[0]} भी है — मेहनत और उपाय से परिणाम मिलेंगे।`;
+    else yogaPlain='कोई प्रमुख योग नहीं — ग्रह स्थिति संतुलित है, धैर्य से काम करें।';
+  } else {
+    if(posYogaNames.length&&!negYogaNames.length) yogaPlain=`Strong positive Yogas (${posYogaNames.join(', ')}) indicate success and prosperity.`;
+    else if(negYogaNames.length&&!posYogaNames.length) yogaPlain=`${negYogaNames.join(', ')} present — remedies and awareness are recommended.`;
+    else if(posYogaNames.length&&negYogaNames.length) yogaPlain=`Positive Yogas (${posYogaNames[0]}) offset by ${negYogaNames[0]} — effort and remedies will yield results.`;
+    else yogaPlain='No dominant Yogas — a balanced chart; steady effort wins.';
+  }
+  document.getElementById('out-yogas').insertAdjacentHTML('beforeend', plainBanner(yogaPlain, yogaTone));
 
   // ── STRENGTHS & CHALLENGES ──
   const strong=planets.filter(p=>p.dignity==='Exalted'||p.dignity==='Own sign');
@@ -1106,17 +2271,31 @@ function renderOutput(data){
   const wellPlaced=planets.filter(p=>kendra.includes(p.house)||trikona.includes(p.house));
   document.getElementById('out-strengths').innerHTML=`
     <div style="margin-bottom:14px">
-      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;color:var(--teal);margin-bottom:8px">STRENGTHS</div>
-      ${strong.length?strong.map(p=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">✓ ${p.name} in ${p.sign} (${p.dignity}) in House ${p.house} — strong placement</p>`).join(''):''}
-      ${wellPlaced.length?`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">✓ Planets in strong houses (Kendra/Trikona): ${wellPlaced.map(p=>`${PLANET_SYMBOLS[p.name]} ${p.name}`).join(', ')}</p>`:''}
+      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;color:var(--teal);margin-bottom:8px">${t('strengths')}</div>
+      ${strong.length?strong.map(p=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">✓ ${pName(p.name)} ${hi?'में':'in'} ${p.sign} (${dig(p.dignity)}) ${hi?'भाव':'House'} ${p.house} — ${t('strongPlanet')}</p>`).join(''):''}
+      ${wellPlaced.length?`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">✓ ${hi?'केंद्र/त्रिकोण में ग्रह:':'Planets in strong houses (Kendra/Trikona):'} ${wellPlaced.map(p=>`${PLANET_SYMBOLS[p.name]} ${pName(p.name)}`).join(', ')}</p>`:''}
       ${yogas.filter(y=>y.type==='positive').map(y=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">✓ ${y.name}</p>`).join('')}
     </div>
     <div>
-      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;color:var(--red);margin-bottom:8px">CHALLENGES</div>
-      ${weak.length?weak.map(p=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">⚠ ${p.name} in ${p.sign} (Debilitated) — needs remedies or conscious effort</p>`).join(''):'<p style="font-size:14px;color:var(--text-dim)">No debilitated planets detected.</p>'}
+      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;color:var(--red);margin-bottom:8px">${t('challenges')}</div>
+      ${weak.length?weak.map(p=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">⚠ ${pName(p.name)} ${hi?'में':'in'} ${p.sign} (${t('debilitated')}) — ${hi?'उपाय या सचेत प्रयास आवश्यक':'needs remedies or conscious effort'}</p>`).join(''):`<p style="font-size:14px;color:var(--text-dim)">${t('noDebil')}</p>`}
       ${yogas.filter(y=>y.type==='negative').map(y=>`<p style="font-size:14px;color:var(--text-dim);margin-bottom:6px">⚠ ${y.name}</p>`).join('')}
     </div>
   `;
+
+  // Strengths plain summary
+  const strengthTone = getStrengthsTone(strong, weak);
+  let strengthPlain = '';
+  if(hi){
+    if(strong.length>1) strengthPlain=`${strong.map(p=>pName(p.name)).join(', ')} बलवान हैं — ये आपकी कुंडली की सबसे बड़ी शक्ति हैं। इनका सदुपयोग करें।`;
+    else if(weak.length>0) strengthPlain=`${weak.map(p=>pName(p.name)).join(', ')} कमजोर स्थिति में ${hi?'हैं':'are'} — इनके उपाय करना लाभदायक रहेगा।`;
+    else strengthPlain='ग्रह स्थिति संतुलित है — कोई बड़ी कमजोरी नहीं, नियमित प्रयास से लक्ष्य मिलेगा।';
+  } else {
+    if(strong.length>1) strengthPlain=`${strong.map(p=>pName(p.name)).join(', ')} are in strong dignity — your biggest planetary assets.`;
+    else if(weak.length>0) strengthPlain=`${weak.map(p=>pName(p.name)).join(', ')} need attention — remedies will help strengthen these areas.`;
+    else strengthPlain='Balanced planetary picture — no major weakness, steady effort succeeds.';
+  }
+  document.getElementById('out-strengths').insertAdjacentHTML('beforeend', plainBanner(strengthPlain, strengthTone));
 
   // ── CAREER ──
   const tenthLord=SIGN_LORDS[((lagnaSign+9)%12)];
@@ -1124,23 +2303,30 @@ function renderOutput(data){
   const sun=planets.find(p=>p.name==='Sun');
   document.getElementById('out-career').innerHTML=`
     <p style="font-size:15px;color:var(--text-dim);margin-bottom:12px">
-      <strong style="color:var(--gold-lt)">10th house</strong> (Career) falls in 
-      <strong style="color:var(--gold-lt)">${SIGNS[(lagnaSign+9)%12]}</strong>, 
-      ruled by <strong style="color:var(--gold-lt)">${tenthLord}</strong>.
+      <strong style="color:var(--gold-lt)">${hi?'दशम भाव':'10th house'}</strong> (${hi?'करियर':'Career'}) 
+      <strong style="color:var(--gold-lt)">${SIGNS[(lagnaSign+9)%12]}</strong> ${hi?'में है,':'falls in,'} 
+      ${hi?'स्वामी:':'ruled by'} <strong style="color:var(--gold-lt)">${pName(tenthLord)}</strong>.
     </p>
     <p style="font-size:14px;color:var(--text-dim);margin-bottom:10px">
-      ${tenthLord} is placed in House ${tenthLordPlanet?.house||'—'} (${tenthLordPlanet?.sign||'—'}).
-      Career themes: <strong style="color:var(--text)">${CAREER_INDICATORS[tenthLord]||'diverse fields'}</strong>.
+      ${pName(tenthLord)} ${hi?'भाव':'House'} ${tenthLordPlanet?.house||'—'} (${tenthLordPlanet?.sign||'—'}) ${hi?'में।':'.'}
+      ${t('careerThemes')}: <strong style="color:var(--text)">${carInd(tenthLord)||''}</strong>.
     </p>
     <p style="font-size:14px;color:var(--text-dim);margin-bottom:10px">
-      Sun (natural significator of career) in House ${sun.house} (${sun.sign}): 
-      ${HOUSE_SIG[sun.house-1]}.
+      ${hi?'सूर्य (करियर के कारक)':'Sun (natural significator of career)'} ${hi?'भाव':'House'} ${sun.house} (${sun.sign}): 
+      ${hSig(sun.house-1)}.
     </p>
     <p style="font-size:14px;color:var(--text-dim)">
-      Current Mahadasha lord <strong style="color:var(--gold-lt)">${currentDasha?.lord}</strong> career inclinations: 
-      ${CAREER_INDICATORS[currentDasha?.lord]||'various'}.
+      ${t('careerCurrent')}: <strong style="color:var(--gold-lt)">${pName(currentDasha?.lord)}</strong> — 
+      ${carInd(currentDasha?.lord)||''}.
     </p>
   `;
+
+  // Career plain summary
+  const careerTone = getCareerTone(tenthLordPlanet);
+  const careerPlain = hi
+    ? `आपके करियर का क्षेत्र ${carInd(tenthLord)||'विविध'} है। ${tenthLordPlanet?.dignity==='Exalted'?'दशम भाव स्वामी उच्च में है — करियर में सफलता की अच्छी संभावना है।':tenthLordPlanet?.dignity==='Debilitated'?'दशम भाव स्वामी नीच में है — करियर में प्रयास और उपाय जरूरी हैं।':'मेहनत और सही दिशा से करियर में अच्छे परिणाम मिलेंगे।'}`
+    : `Career areas: ${carInd(tenthLord)||'varied'}. ${tenthLordPlanet?.dignity==='Exalted'?'10th lord is exalted — strong career prospects.':tenthLordPlanet?.dignity==='Debilitated'?'10th lord is weak — remedies and persistence recommended.':'Consistent effort in your indicated fields yields good results.'}`;
+  document.getElementById('out-career').insertAdjacentHTML('beforeend', plainBanner(careerPlain, careerTone));
 
   // ── RELATIONSHIPS ──
   const seventhSign=SIGNS[(lagnaSign+6)%12];
@@ -1150,77 +2336,87 @@ function renderOutput(data){
   const jup=planets.find(p=>p.name==='Jupiter');
   document.getElementById('out-relationship').innerHTML=`
     <p style="font-size:15px;color:var(--text-dim);margin-bottom:10px">
-      <strong style="color:var(--gold-lt)">7th house</strong> (Partnerships) falls in 
-      <strong style="color:var(--gold-lt)">${seventhSign}</strong>, ruled by 
-      <strong style="color:var(--gold-lt)">${seventhLord}</strong>.
-      ${seventhLordP?`7th lord placed in House ${seventhLordP.house}.`:''}
+      <strong style="color:var(--gold-lt)">${hi?'सप्तम भाव':'7th house'}</strong> (${hi?'साझेदारी':'Partnerships'}) 
+      <strong style="color:var(--gold-lt)">${seventhSign}</strong> ${hi?'में, स्वामी:':'falls in, ruled by'} 
+      <strong style="color:var(--gold-lt)">${pName(seventhLord)}</strong>.
+      ${seventhLordP?`${hi?'सप्तमेश भाव':'7th lord placed in House'} ${seventhLordP.house}.`:''}
     </p>
     <p style="font-size:14px;color:var(--text-dim);margin-bottom:8px">
-      Venus (significator of love): House ${venus.house} (${venus.sign})${venus.dignity?', '+venus.dignity:''}.
-      ${venus.dignity==='Exalted'?'Strong Venus — beauty, harmony, and affection in relationships.':
-        venus.dignity==='Debilitated'?'Venus debilitated — relationship challenges; focus on self-worth.':''}
+      ${t('venusDesc')}: ${hi?'भाव':'House'} ${venus.house} (${venus.sign})${dig(venus.dignity)?', '+dig(venus.dignity):''}.
+      ${venus.dignity==='Exalted'?(hi?'बलवान शुक्र — संबंधों में सौंदर्य और प्रेम।':'Strong Venus — beauty, harmony, and affection in relationships.'):
+        venus.dignity==='Debilitated'?(hi?'नीच शुक्र — संबंधों में चुनौतियाँ।':'Venus debilitated — relationship challenges; focus on self-worth.'):''}
     </p>
     <p style="font-size:14px;color:var(--text-dim)">
-      Jupiter (significator of marriage for women / dharmic partner): House ${jup.house} (${jup.sign})${jup.dignity?', '+jup.dignity:''}.
+      ${t('jupDesc')}: ${hi?'भाव':'House'} ${jup.house} (${jup.sign})${dig(jup.dignity)?', '+dig(jup.dignity):''}.
     </p>
   `;
+
+  // Relationships plain summary
+  const relationTone = getRelationTone(venus, seventhLordP);
+  const relationPlain = hi
+    ? venus.dignity==='Exalted'?'शुक्र बलवान है — प्रेम और विवाह में सुख और सामंजस्य की संभावना अच्छी है।'
+      : venus.dignity==='Debilitated'?'शुक्र कमजोर है — संबंधों में धैर्य और आत्मसम्मान बनाए रखना जरूरी है।'
+      : 'संबंधों में संतुलन है — खुलकर संवाद करने से रिश्ते मजबूत होंगे।'
+    : venus.dignity==='Exalted'?'Strong Venus — love and marriage prospects are harmonious and favorable.'
+      : venus.dignity==='Debilitated'?'Venus is weak — patience and self-worth are key in relationships.'
+      : 'Balanced relationship picture — open communication strengthens bonds.';
+  document.getElementById('out-relationship').insertAdjacentHTML('beforeend', plainBanner(relationPlain, relationTone));
 
   // ── HEALTH ──
   const sixthSign=SIGNS[(lagnaSign+5)%12];
   const sixthLord=SIGN_LORDS[(lagnaSign+5)%12];
   const sixthLordP=planets.find(p=>p.name===sixthLord);
   const lagnaSignName=SIGNS[lagnaSign];
-  const LAGNA_HEALTH={
-    Mesha:'Head, brain, eyes; prone to fevers, accidents, headaches.',
-    Vrishabha:'Throat, neck, thyroid; prone to throat infections, weight issues.',
-    Mithuna:'Lungs, shoulders, arms; prone to respiratory issues, anxiety.',
-    Karka:'Chest, stomach, breasts; prone to digestive issues, fluid retention.',
-    Simha:'Heart, spine, back; prone to cardiac issues, back pain.',
-    Kanya:'Intestines, digestive tract; prone to IBS, anxiety-related digestion.',
-    Tula:'Kidneys, lower back, skin; prone to kidney stones, skin conditions.',
-    Vrishchika:'Reproductive organs, colon; prone to hormonal imbalances.',
-    Dhanu:'Hips, thighs, liver; prone to liver issues, sciatica.',
-    Makara:'Knees, bones, joints; prone to arthritis, dental issues.',
-    Kumbha:'Ankles, calves, circulation; prone to circulatory issues.',
-    Meena:'Feet, lymphatic system; prone to fluid retention, immune issues.'
-  };
+  const healthText=hi?(LAGNA_HEALTH_HI[lagnaSignName]||''):(({"Mesha":'Head, brain, eyes; prone to fevers, accidents, headaches.',"Vrishabha":'Throat, neck, thyroid; prone to throat infections, weight issues.',"Mithuna":'Lungs, shoulders, arms; prone to respiratory issues, anxiety.',"Karka":'Chest, stomach, breasts; prone to digestive issues, fluid retention.',"Simha":'Heart, spine, back; prone to cardiac issues, back pain.',"Kanya":'Intestines, digestive tract; prone to IBS, anxiety-related digestion.',"Tula":'Kidneys, lower back, skin; prone to kidney stones, skin conditions.',"Vrishchika":'Reproductive organs, colon; prone to hormonal imbalances.',"Dhanu":'Hips, thighs, liver; prone to liver issues, sciatica.',"Makara":'Knees, bones, joints; prone to arthritis, dental issues.',"Kumbha":'Ankles, calves, circulation; prone to circulatory issues.',"Meena":'Feet, lymphatic system; prone to fluid retention, immune issues.'})[lagnaSignName]||'');
   document.getElementById('out-health').innerHTML=`
     <p style="font-size:15px;color:var(--text-dim);margin-bottom:10px">
-      <strong style="color:var(--gold-lt)">Body areas ruled by ${lagnaSignName} Lagna:</strong> ${LAGNA_HEALTH[lagnaSignName]||''}
+      <strong style="color:var(--gold-lt)">${t('bodyAreas')} ${lagnaSignName} ${hi?'लग्न:':'Lagna:'}</strong> ${healthText}
     </p>
     <p style="font-size:14px;color:var(--text-dim);margin-bottom:8px">
-      <strong style="color:var(--gold-lt)">6th house</strong> (Health/disease) in ${sixthSign}, 
-      ruled by ${sixthLord} (placed in House ${sixthLordP?.house||'—'}).
+      <strong style="color:var(--gold-lt)">${t('sixthHouse')}</strong> ${sixthSign}, 
+      ${hi?'स्वामी':'ruled by'} ${pName(sixthLord)} (${hi?'भाव':'House'} ${sixthLordP?.house||'—'} ${hi?'में':'in'}).
     </p>
     ${planets.filter(p=>p.house===6).length?
-      `<p style="font-size:14px;color:var(--red);margin-bottom:8px">⚠ Planets in 6th house: ${planets.filter(p=>p.house===6).map(p=>p.name).join(', ')} — health challenges need monitoring.</p>`:''}
-    <p style="font-size:14px;color:var(--text-dim)">General advice: Maintain regular sleep cycles, address stress early, and exercise suited to ${lagnaSignName} constitution.</p>
+      `<p style="font-size:14px;color:var(--red);margin-bottom:8px">${t('planetsIn6')}: ${planets.filter(p=>p.house===6).map(p=>pName(p.name)).join(', ')} ${t('healthMonitor')}</p>`:''}
+    <p style="font-size:14px;color:var(--text-dim)">${t('healthAdvice')} ${lagnaSignName} ${t('constitution')}</p>
   `;
+
+  // Health plain summary
+  const healthTone = getHealthTone(planets);
+  const in6planets = planets.filter(p=>p.house===6).map(p=>pName(p.name));
+  const healthPlain = hi
+    ? in6planets.length>=2 ? `षष्ठ भाव में ${in6planets.join(' और ')} हैं — स्वास्थ्य पर विशेष ध्यान दें, नियमित जांच जरूरी है।`
+      : in6planets.length===1 ? `${in6planets[0]} षष्ठ भाव में है — ${lagnaSignName} लग्न के अनुसार ${LAGNA_HEALTH_HI[lagnaSignName]||'स्वास्थ्य का ध्यान रखें।'}`
+      : `${lagnaSignName} लग्न से आपको ${LAGNA_HEALTH_HI[lagnaSignName]||'स्वास्थ्य सजगता'} पर ध्यान देना चाहिए। अभी कोई बड़ी चुनौती नहीं दिखती।`
+    : in6planets.length>=2 ? `${in6planets.join(' and ')} in the 6th house — health monitoring is strongly advised.`
+      : in6planets.length===1 ? `${in6planets[0]} in the 6th house — be mindful of ${lagnaSignName} constitution areas.`
+      : `No planets in the 6th house — generally favorable health outlook. Follow ${lagnaSignName} constitution guidelines.`;
+  document.getElementById('out-health').insertAdjacentHTML('beforeend', plainBanner(healthPlain, healthTone));
 
   // ── REMEDIES ──
   const REMEDIES={
-    Sun:{gem:'Ruby',mantra:'Om Hraam Hreem Hraum Sah Suryaya Namah',day:'Sunday',donate:'Wheat, jaggery, copper'},
-    Moon:{gem:'Pearl (Moti) in silver',mantra:'Om Som Somaya Namah',day:'Monday',donate:'White items, milk, rice'},
-    Mars:{gem:'Red Coral (Moonga)',mantra:'Om Angarakaya Namah',day:'Tuesday',donate:'Red lentils, copper'},
-    Mercury:{gem:'Emerald (Panna)',mantra:'Om Budhaya Namah',day:'Wednesday',donate:'Green moong dal'},
-    Jupiter:{gem:'Yellow Sapphire (Pukhraj)',mantra:'Om Graam Greem Graum Sah Gurave Namah',day:'Thursday',donate:'Yellow dal, turmeric'},
-    Venus:{gem:'Diamond or White Sapphire',mantra:'Om Shum Shukraya Namah',day:'Friday',donate:'White clothes, sugar, camphor'},
-    Saturn:{gem:'Blue Sapphire (Neelam) — consult expert',mantra:'Om Sham Shanaischaraya Namah',day:'Saturday',donate:'Sesame, black dal, iron'},
-    Rahu:{gem:'Hessonite (Gomed) — consult expert',mantra:'Om Rahave Namah',day:'Saturday',donate:'Feed dogs, donate to underprivileged'},
-    Ketu:{gem:'Cat\'s Eye (Lehsunia) — consult expert',mantra:'Om Ketave Namah',day:'Tuesday',donate:'Feed stray animals'}
+    Sun:{gem:hi?'माणिक्य (Ruby)':'Ruby',mantra:'ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः',day:hi?'रविवार':'Sunday',donate:hi?'गेहूं, गुड़, तांबा':'Wheat, jaggery, copper'},
+    Moon:{gem:hi?'मोती (चांदी में)':'Pearl (Moti) in silver',mantra:'ॐ सों सोमाय नमः',day:hi?'सोमवार':'Monday',donate:hi?'सफेद वस्तुएं, दूध, चावल':'White items, milk, rice'},
+    Mars:{gem:hi?'मूंगा (Red Coral)':'Red Coral (Moonga)',mantra:'ॐ अंगारकाय नमः',day:hi?'मंगलवार':'Tuesday',donate:hi?'मसूर दाल, तांबा':'Red lentils, copper'},
+    Mercury:{gem:hi?'पन्ना (Emerald)':'Emerald (Panna)',mantra:'ॐ बुधाय नमः',day:hi?'बुधवार':'Wednesday',donate:hi?'हरी मूंग दाल':'Green moong dal'},
+    Jupiter:{gem:hi?'पुखराज (Yellow Sapphire)':'Yellow Sapphire (Pukhraj)',mantra:'ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः',day:hi?'गुरुवार':'Thursday',donate:hi?'पीली दाल, हल्दी':'Yellow dal, turmeric'},
+    Venus:{gem:hi?'हीरा या सफेद पुखराज':'Diamond or White Sapphire',mantra:'ॐ शुं शुक्राय नमः',day:hi?'शुक्रवार':'Friday',donate:hi?'सफेद कपड़े, चीनी, कपूर':'White clothes, sugar, camphor'},
+    Saturn:{gem:hi?'नीलम — विशेषज्ञ से पूछें':'Blue Sapphire — consult expert',mantra:'ॐ शं शनैश्चराय नमः',day:hi?'शनिवार':'Saturday',donate:hi?'तिल, काली दाल, लोहा':'Sesame, black dal, iron'},
+    Rahu:{gem:hi?'गोमेद — विशेषज्ञ से पूछें':'Hessonite (Gomed) — consult expert',mantra:'ॐ राहवे नमः',day:hi?'शनिवार':'Saturday',donate:hi?'कुत्तों को खाना खिलाएं':'Feed dogs, donate to underprivileged'},
+    Ketu:{gem:hi?'लहसुनिया — विशेषज्ञ से पूछें':'Cat\'s Eye — consult expert',mantra:'ॐ केतवे नमः',day:hi?'मंगलवार':'Tuesday',donate:hi?'आवारा जानवरों को खाना दें':'Feed stray animals'}
   };
   const needsRemedy=[...weak.map(p=>p.name),...planets.filter(p=>p.house===6||p.house===8||p.house===12).map(p=>p.name)];
   const uniqueRemedy=[...new Set(needsRemedy)].slice(0,5);
-  if(!uniqueRemedy.length)uniqueRemedy.push('Jupiter'); // always strengthen benefics
+  if(!uniqueRemedy.length)uniqueRemedy.push('Jupiter');
   document.getElementById('out-remedies').innerHTML=uniqueRemedy.map(pn=>{
     const r=REMEDIES[pn];if(!r)return'';
     return`<div class="remedy-item">
       <div class="remedy-icon">${PLANET_SYMBOLS[pn]||'◈'}</div>
       <div class="remedy-body">
-        <div class="planet">${pn}</div>
-        <p>💎 Gemstone: ${r.gem}<br>
-           🕯 Mantra: <em>${r.mantra}</em> (108× on ${r.day})<br>
-           🙏 Donation: ${r.donate}</p>
+        <div class="planet">${pName(pn)}</div>
+        <p>💎 ${t('gemstone')}: ${r.gem}<br>
+           🕯 ${t('mantra')}: <em>${r.mantra}</em> (108 ${hi?'बार':t('times')} ${r.day} ${hi?'को':''})<br>
+           🙏 ${t('donation')}: ${r.donate}</p>
       </div>
     </div>`;
   }).join('');
@@ -1228,19 +2424,93 @@ function renderOutput(data){
   // ── SUMMARY ──
   const lagnaLord=SIGN_LORDS[lagnaSign];
   const lagnaLordP=planets.find(p=>p.name===lagnaLord);
-  const positiveYogas=yogas.filter(y=>y.type==='positive').map(y=>y.name).join(', ')||'no major Yogas';
-  document.getElementById('out-summary').textContent=
-    `${name}'s chart shows ${lagnaSignName} Lagna with ${lagnaLord} as the chart ruler, placed in House ${lagnaLordP?.house||'—'} (${lagnaLordP?.sign||'—'}). ` +
-    `The Moon in ${moon.sign} (${moon.nak.name} Nakshatra) defines an emotionally ${moon.signIdx===3||moon.signIdx===11?'deep and empathic':moon.signIdx===1||moon.signIdx===3?'stable and sensuous':moon.signIdx===7?'intense and transformative':'complex and multi-layered'} nature. ` +
-    `Notable Yogas include ${positiveYogas}. ` +
-    `The current ${currentDasha?.lord} Mahadasha (until ${currentDasha?fmtDate(currentDasha.end):'—'}) activates themes of ${currentDasha?HOUSE_SIG[(planets.find(p=>p.name===currentDasha.lord)?.house||1)-1]:'transformation'}. ` +
-    `Career promise lies in ${CAREER_INDICATORS[tenthLord]||'diverse fields'} with wealth potential linked to ${lagnaLord} placement. ` +
-    `Overall, this is a chart with ${strong.length>2?'strong planetary dignity and growth potential':'a karmic, lesson-rich life path where persistence yields compound returns'}.`;
+  const positiveYogas=yogas.filter(y=>y.type==='positive').map(y=>y.name).join(', ')||(hi?'कोई प्रमुख योग नहीं':'no major Yogas');
+  const emotionWord=moon.signIdx===3||moon.signIdx===11?(hi?'गहरी और सहानुभूतिशील':'deep and empathic'):moon.signIdx===1?(hi?'स्थिर और कामुक':'stable and sensuous'):moon.signIdx===7?(hi?'गहन और परिवर्तनकारी':'intense and transformative'):(hi?'जटिल':'complex');
+  document.getElementById('out-summary').textContent= hi?
+    `${name} की कुंडली में ${lagnaSignName} लग्न है, लग्नेश ${pName(lagnaLord)} भाव ${lagnaLordP?.house||'—'} (${lagnaLordP?.sign||'—'}) में। `+
+    `${moon.sign} राशि में चंद्र (${NAK_HI[moon.nak.name]||moon.nak.name} नक्षत्र) ${emotionWord} स्वभाव दर्शाता है। `+
+    `प्रमुख योग: ${positiveYogas}। `+
+    `वर्तमान ${pName(currentDasha?.lord)} महादशा (${currentDasha?fmtDate(currentDasha.end):'—'} तक) ${currentDasha?hSig((planets.find(p=>p.name===currentDasha.lord)?.house||1)-1):''}। `+
+    `करियर संकेत: ${carInd(tenthLord)||''}। `+
+    `कुल मिलाकर, यह ${strong.length>2?'बलवान ग्रह स्थिति वाली कुंडली है जो विकास की संभावना रखती है।':'कर्मप्रधान कुंडली है जहाँ धैर्य और परिश्रम से सफलता मिलती है।'}`
+    :
+    `${name}'s chart shows ${lagnaSignName} Lagna with ${pName(lagnaLord)} as the chart ruler, placed in House ${lagnaLordP?.house||'—'} (${lagnaLordP?.sign||'—'}). `+
+    `The Moon in ${moon.sign} (${moon.nak.name} Nakshatra) defines an emotionally ${emotionWord} nature. `+
+    `Notable Yogas include ${positiveYogas}. `+
+    `The current ${pName(currentDasha?.lord)} Mahadasha (until ${currentDasha?fmtDate(currentDasha.end):'—'}) activates themes of ${currentDasha?hSig((planets.find(p=>p.name===currentDasha.lord)?.house||1)-1):'transformation'}. `+
+    `Career promise lies in ${carInd(tenthLord)||'diverse fields'}. `+
+    `Overall, this is a chart with ${strong.length>2?'strong planetary dignity and growth potential':'a karmic life path where persistence yields compound returns'}.`;
 
-  // Show output
+  // Remove old action box if re-rendering
+  const oldActionBox = document.querySelector('.action-box');
+  if(oldActionBox) oldActionBox.remove();
+
+  // ── WHAT TO DO NOW ACTION BOX ──
+  const dashaLord = currentDasha?.lord||'Jupiter';
+  const dashaP = planets.find(p=>p.name===dashaLord);
+  const topStrong = strong[0]||wellPlaced[0];
+  const topWeak = weak[0];
+
+  const action1 = hi
+    ? `अभी ${pName(dashaLord)} महादशा चल रही है — ${carInd(dashaLord)||'अपने क्षेत्र'} में प्रयास करने का यह सही समय है। ${dashaP?.dignity==='Exalted'?'ग्रह बलवान है — पूरी ऊर्जा लगाएं।':dashaP?.dignity==='Debilitated'?'ग्रह कमजोर है — धैर्य रखें और उपाय करें।':'स्थिर प्रयास से परिणाम मिलेंगे।'}`
+    : `You are in ${pName(dashaLord)} Mahadasha — now is the time to focus on ${carInd(dashaLord)||'your field'}. ${dashaP?.dignity==='Exalted'?'This planet is strong — give it your full energy.':dashaP?.dignity==='Debilitated'?'This planet is weak — be patient and use remedies.':'Steady effort will bring results.'}`;
+
+  const action2 = hi
+    ? topStrong
+      ? `${pName(topStrong.name)} आपकी सबसे बड़ी शक्ति है (${topStrong.dignity||('भाव '+topStrong.house+' में')}) — ${(PLANET_TAGS[topStrong.name]?.hi||[]).slice(0,2).join(' और ')} के क्षेत्रों में आगे बढ़ें।`
+      : `केंद्र/त्रिकोण के ग्रहों का उपयोग करें — ये आपके जीवन की सबसे मजबूत नींव हैं।`
+    : topStrong
+      ? `${pName(topStrong.name)} is your greatest strength (${topStrong.dignity||('House '+topStrong.house)}) — lean into ${(PLANET_TAGS[topStrong.name]?.en||[]).slice(0,2).join(' and ')} areas.`
+      : `Lean on your Kendra/Trikona planets — these are the strongest foundations in your chart.`;
+
+  const action3 = hi
+    ? topWeak
+      ? `${pName(topWeak.name)} नीच में है — ${(PLANET_TAGS[topWeak.name]?.hi||[]).slice(0,2).join(' और ')} में सावधानी रखें। ${PLANET_SYMBOLS[topWeak.name]} का मंत्र नियमित जपें।`
+      : weak.length===0
+        ? `कोई ग्रह नीच में नहीं — अपनी दिनचर्या में नियमित साधना जोड़ें जिससे ग्रहों का बल बना रहे।`
+        : `${pName(weak[0]?.name||'Saturn')} पर ध्यान दें और उपाय करें।`
+    : topWeak
+      ? `${pName(topWeak.name)} is debilitated — be careful in ${(PLANET_TAGS[topWeak.name]?.en||[]).slice(0,2).join(' and ')} areas. Chant ${PLANET_SYMBOLS[topWeak.name]}'s mantra regularly.`
+      : `No debilitated planets — maintain your chart's balance by adding consistent spiritual practice to your daily routine.`;
+
+  const actionBoxHTML = `<div class="action-box">
+    <div class="action-box-title">⚡ ${hi?'अभी क्या करें — आपके लिए 3 कदम':'What To Do Now — Your 3 Steps'}</div>
+    <div class="action-items">
+      <div class="action-item"><div class="action-num">1</div><div class="action-text">${action1}</div></div>
+      <div class="action-item"><div class="action-num">2</div><div class="action-text">${action2}</div></div>
+      <div class="action-item"><div class="action-num">3</div><div class="action-text">${action3}</div></div>
+    </div>
+  </div>`;
+  document.getElementById('out-summary').insertAdjacentHTML('afterend', actionBoxHTML);
+
+  // ── INJECT SECTION HEADER INDICATORS ──
+  const sectionTones = [
+    lagnaTone, rashiTone, 'yellow', 'yellow',
+    dashaTone, yogaTone, strengthTone, careerTone,
+    relationTone, healthTone, 'yellow', 'green',
+  ];
+  const toneLabel = hi ? TONE_LABEL_HI : TONE_LABEL_EN;
+  document.querySelectorAll('#output .section').forEach((sec, i)=>{
+    if(i >= sectionTones.length) return;
+    const head = sec.querySelector('.sec-head');
+    if(!head) return;
+    // Remove old indicator if present, then re-add
+    const old = head.querySelector('.sec-indicator');
+    if(old) old.remove();
+    const tone = sectionTones[i];
+    head.insertAdjacentHTML('beforeend',`<span class="sec-indicator ${tone}">${toneLabel[tone]}</span>`);
+  });
+
+  // Update WhatsApp button text for lang
+  const waBtn = document.getElementById('btn-whatsapp-text');
+  if(waBtn) waBtn.textContent = hi ? 'WhatsApp पर शेयर करें' : 'Share on WhatsApp';
+
+  // Show output (only scroll on first render, not on lang switch re-render)
+  const isFirstRender = document.getElementById('output').style.display==='none';
   document.getElementById('form-card').style.display='none';
   document.getElementById('output').style.display='block';
-  document.getElementById('output').scrollIntoView({behavior:'smooth'});
+  applyLangToUI();
+  if(isFirstRender) document.getElementById('output').scrollIntoView({behavior:'smooth'});
 }
 </script>
 </body>
