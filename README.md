@@ -41,30 +41,6 @@ Free, open-source, client-side Vedic Kundali calculator. **No backend. No API ke
 
 ---
 
-## Deploy to GitHub Pages (5 minutes)
-
-### Option A — Automatic (GitHub Actions)
-1. Fork this repo
-2. Go to **Settings → Pages → Source → GitHub Actions**
-3. Push to `main` — auto-deploys
-
-### Option B — Manual
-1. Fork this repo
-2. Go to **Settings → Pages → Source → Deploy from branch**
-3. Select `main` branch, `/ (root)` folder
-4. Save — live in ~60 seconds
-
----
-
-## Repository Structure
-```
-kundali-open/
-├── index.html              # Entire app (single file)
-├── .github/
-│   └── workflows/
-│       └── deploy.yml      # Auto-deploy workflow
-├── README.md
-└── LICENSE
 ```
 
 ---
